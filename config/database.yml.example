@@ -1,3 +1,11 @@
+#Tal Run this
+  #Change your username: "your computer name"
+
+#bundle exec rake db:create:all
+
+
+
+
 # PostgreSQL. Versions 8.2 and up are supported.
 #
 # Install the pg driver:
