@@ -4,10 +4,12 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
   
+  #create a new user, but not save
   def new
   	@user = User.new
   end
 
+  #Save to new user
   def create
     @user = User.new(user_params)
     if @user.save
@@ -24,12 +26,14 @@ class UsersController < ApplicationController
   end
 
   def index
+    #Paginiate all the user with the default per page
     @users = User.paginate(page: params[:page])
   end
 
   def edit
   end
 
+  #Update a user
   def update
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
@@ -39,6 +43,8 @@ class UsersController < ApplicationController
     end
   end
 
+  #Admin users are the only one's who can do this
+  #Create admin users through heroku console
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted."

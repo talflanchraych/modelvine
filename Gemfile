@@ -6,13 +6,14 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 
 gem 'bootstrap-sass', '2.3.2.0'
+gem 'will_paginate', '3.0.4'
+gem 'bootstrap-will_paginate', '0.0.9'
+
 gem 'jquery-rails', '2.2.1'
 gem 'turbolinks', '1.1.1'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '~>4.0.0'
-gem 'will_paginate', '3.0.4'
-gem 'bootstrap-will_paginate', '0.0.9'
 #Create fake users for development and testing purposes
 gem 'faker', '1.1.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -28,6 +29,11 @@ gem 'pg'
 gem 'paperclip', '~> 3.0'
 #Amazon store
 gem 'aws-sdk'
+
+group :development do
+  #View all table contents in the model
+  gem 'annotate'
+end
 
 group :development, :test do
 	gem 'rspec-rails', '2.13.1'
