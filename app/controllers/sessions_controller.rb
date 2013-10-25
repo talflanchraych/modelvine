@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   def new
 	end
 
+  #log IN
 	def create
   	user = User.find_by(email: params[:session][:email].downcase)
   	# Check if correct user

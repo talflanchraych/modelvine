@@ -13,7 +13,9 @@
 #
 
 class User < ActiveRecord::Base
-	#ensure uniquess by downcasing the email attribute
+	has_many :user_photos, :dependent => :destroy
+
+  #ensure uniquess by downcasing the email attribute
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token
 
@@ -33,6 +35,14 @@ class User < ActiveRecord::Base
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
   end
+
+  def feed
+    # This is preliminary. See "Following users" for the full implementation.
+    UserPhoto.where("user_id = ?", id)
+    # The ? ensures that the id is properly escaped before being included in underlying SQL query
+    # This prevents SQL injection
+  end
+
 
   private
 

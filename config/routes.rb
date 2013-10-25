@@ -2,6 +2,8 @@ FiscalFitness::Application.routes.draw do
   # resources gives :users all RESTful routes
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :user_photos, only: [:create, :destroy]
+  # Home Page
   root  'static_pages#home'
   # Match URL with controller action. Specify specifically
   match '/signup',  to: 'users#new',            via: 'get'

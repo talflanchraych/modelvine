@@ -1,0 +1,8 @@
+<%= form_for(@user_photo) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+  	<!-- Add the Paperclip, photo uploading portion here -->
+    <%= f.text_area :caption, placeholder: "Add a caption to the photo" %>
+  </div>
+  <%= f.submit "Updload", class: "btn btn-large btn-primary" %>
+<% end %>
