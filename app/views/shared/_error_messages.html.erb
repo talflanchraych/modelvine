@@ -3,7 +3,6 @@
 <% if object.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
-      <!-- Note that we are passing in object, so this works for all controllers -->
       The form contains <%= pluralize(object.errors.count, "error") %>.
     </div>
     <ul>

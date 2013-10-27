@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
   
+  def index
+    #Paginiate all the user with the default per page
+    @users = User.paginate(page: params[:page])
+  end
+
   #create a new user, but not save
   def new
   	@user = User.new
@@ -24,11 +29,6 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
     @user_photos = @user.user_photos
-  end
-
-  def index
-    #Paginiate all the user with the default per page
-    @users = User.paginate(page: params[:page])
   end
 
   def edit
