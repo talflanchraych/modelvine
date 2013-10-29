@@ -1,0 +1,13 @@
+<h1>Listing ALL User Photo's Uploaded to the Site</h1>
+
+<% @user_photo.each do |user_photo| %>
+
+  <div><%= image_tag user_photo.photo.url %></div>
+  <div><%= user_photo.caption %></div>
+
+    <%= link_to("Show", {:action => 'show', :id => user_photo.id}, :class => 'action show') %> 
+    <br>
+
+<% end %>
+
+<%= link_to "New Photo", new_user_photo_path %>

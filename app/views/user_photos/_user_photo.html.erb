@@ -1,6 +1,12 @@
 <li>
+  <div><%= image_tag user_photo.photo.url %></div>
   <span class="caption"><%= user_photo.caption %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(user_photo.created_at) %> ago.
   </span>
+  <% if current_user?(user_photo.user) %>
+    <%= link_to "delete", user_photo, method: :delete,
+                                      data: { confirm: "Are you sure?" },
+                                      title: user_photo.caption %>
+  <% end %>
 </li>

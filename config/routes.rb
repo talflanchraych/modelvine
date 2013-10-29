@@ -2,7 +2,8 @@ FiscalFitness::Application.routes.draw do
   # resources gives :users all RESTful routes
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :user_photos, only: [:create, :destroy]
+  resources :user_photos #, only: [:create, :destroy]
+
   # Home Page
   root  'static_pages#home'
   # Match URL with controller action. Specify specifically
@@ -11,6 +12,7 @@ FiscalFitness::Application.routes.draw do
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
+  match '/developer',to: 'static_pages#developer', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

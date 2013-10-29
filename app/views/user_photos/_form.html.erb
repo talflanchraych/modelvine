@@ -1,8 +1,9 @@
-<%= form_for(@user_photo) do |f| %>
+<!-- Multi part true allows for to accept attachments -->
+
+<%= form_for(@user_photo, :html => { :multipart => true }) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-  	<!-- Add the Paperclip, photo uploading portion here -->
-  	<%= f.file_field :photo %>
+    <%= f.file_field :photo %>
     <%= f.text_area :caption, placeholder: "Add a caption to the photo" %>
   </div>
   <%= f.submit "Updload", class: "btn btn-large btn-primary" %>
