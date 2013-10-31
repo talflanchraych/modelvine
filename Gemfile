@@ -27,7 +27,7 @@ gem 'pg'
 
 #Attach pictures
 gem 'paperclip', '~> 3.0'
-#Amazon store
+#Amazon store's all pictures
 gem 'aws-sdk'
 
 group :development do

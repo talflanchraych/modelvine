@@ -46,7 +46,7 @@ class UserPhotosController < ApplicationController
 		# STRONG PARAMATERS, Rails 4; This allows the database colum caption to be uploaded through the web
 		# This is the replacement for attribute assesible in Rails 3.2 
 		def user_photo_params
-			params.require(:user_photo).permit(:caption, :photo)
+			params.require(:user_photo).permit(:caption, :photo, :default_photo)
 		end
 
 		# Relates to the destroy action 

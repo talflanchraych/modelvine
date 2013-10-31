@@ -4,6 +4,10 @@
   	<!-- Add the Paperclip, photo uploading portion here -->
   	<%= f.file_field :photo %>
     <%= f.text_area :caption, placeholder: "Add a caption to the photo" %>
+
+    <!-- http://stackoverflow.com/questions/12488051/rails-how-to-keep-checkbox-and-label-on-same-line -->
+    <%= f.check_box :default_photo %>
+    <%= f.label :default_photo, "Would you like this to be your primary photo?" %>
   </div>
   <%= f.submit "Updload", class: "btn btn-large btn-primary" %>
 <% end %>

@@ -5,6 +5,7 @@
 <div>
   <h3>Photo's (<%= @user.user_photos.count %>)</h3>
   <div>
-    <%= render @user_photos %>  
+    <!-- This will only show to defualt picture -->
+    <%= render @user_photos.where(:default_photo => true) %>  
   </div>
 </div>
