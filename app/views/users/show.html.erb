@@ -1,11 +1,16 @@
 <% provide(:title, @user.name) %>
 <h1><%= @user.name %></h1> 
-<h1><%= @user.email %></h1>
+
+<h3><%= @user.type_of_user %>'s Information:</h3>
+<div>Email: <%= @user.email %></div>
+<div>Location: <%= @user.zip_code %></div>
+<div>Website: <%= @user.user_website %> </div>
 
 <div>
-  <h3>Photo's (<%= @user.user_photos.count %>)</h3>
+  <h3>Photo's <%= @user.user_photos.count %></h3>
   <div>
     <!-- This will only show to defualt picture -->
-    <%= render @user_photos.where(:default_photo => true) %>  
+    <%= render @user_photos %>  
   </div>
 </div>
+

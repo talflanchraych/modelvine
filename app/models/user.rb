@@ -10,6 +10,9 @@
 #  password_digest :string(255)
 #  remember_token  :string(255)
 #  admin           :boolean          default(FALSE)
+#  zip_code        :string(255)
+#  type_of_user    :string(255)
+#  user_website    :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -19,12 +22,13 @@ class User < ActiveRecord::Base
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token
 
-	validates :name, presence: true, length: { maximum: 50 }
+  #This validation is only important with the update action
+	#validates :name, presence: true, length: { maximum: 50 }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6, allow_nil: true }
 
   # Sign in user
   def User.new_remember_token
@@ -43,6 +47,10 @@ class User < ActiveRecord::Base
     # This prevents SQL injection
   end
 
+  def get_default_photo
+    # Look at the current user, then their photos, then scoping the default_photo in in user_photo model
+    self.user_photos.default_photo.first
+  end
 
   private
 

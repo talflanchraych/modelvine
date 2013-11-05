@@ -23,9 +23,17 @@ class UserPhotosController < ApplicationController
 	# POST /user_photos
 	def create
 		# Create a instance of photos, fidn the current user and build a new photo
-		@user_photo = current_user.user_photos.build(user_photo_params)
+		# build the user_photo with params without default_photo value
+		@user_photo = current_user.user_photos.build(user_photo_params.except(:default_photo))
+		
 		if @user_photo.save
-			flash[:success] = "Photo Caption successfully added!"
+			# if the photo was saved successfully and user do want to set it as default
+			if params[:user_photo][:default_photo] == "1"
+				# unset old default photo and set current photo as default
+				current_user.get_default_photo.update_attributes(default_photo: false) if current_user.get_default_photo
+				@user_photo.update_attributes(default_photo: true)
+			end
+			flash[:success] = "Photo successfully added!"
 			# Since the User is logged in, the Root URL is changed
 			redirect_to root_url
 		else

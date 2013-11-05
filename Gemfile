@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.1'
 
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'will_paginate', '3.0.4'
@@ -14,6 +14,7 @@ gem 'turbolinks', '1.1.1'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '~>4.0.0'
+gem 'simple_form'
 #Create fake users for development and testing purposes
 gem 'faker', '1.1.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -33,6 +34,7 @@ gem 'aws-sdk'
 group :development do
   #View all table contents in the model
   gem 'annotate'
+  gem 'pry-rails'
 end
 
 group :development, :test do
@@ -64,7 +66,7 @@ end
 
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby'
 
 # Use unicorn as the app server
 # gem 'unicorn'

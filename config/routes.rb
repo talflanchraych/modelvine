@@ -1,8 +1,14 @@
 FiscalFitness::Application.routes.draw do
   # resources gives :users all RESTful routes
-  resources :users
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :user_photos #, only: [:create, :destroy]
+  resources :users do
+    member do
+      post :set_default_photo
+    end
+  end
+  match '/manage_photos', to: 'users#manage_photos', via: 'get'
+
+  resources :sessions, only: [:new, :create, :destroy] 
+  resources :user_photos
 
   # Home Page
   root  'static_pages#home'

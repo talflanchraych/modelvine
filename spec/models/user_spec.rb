@@ -10,6 +10,9 @@
 #  password_digest :string(255)
 #  remember_token  :string(255)
 #  admin           :boolean          default(FALSE)
+#  zip_code        :string(255)
+#  type_of_user    :string(255)
+#  user_website    :string(255)
 #
 
 require 'spec_helper'

@@ -29,9 +29,9 @@ class UserPhoto < ActiveRecord::Base
 
  	# The default way the phot's will be listed
 	default_scope -> { order('created_at DESC') }
-	
+
 	#default_scope -> { where(default_photo: true)}
-	scope :true, -> { where(default_photo: true )}
+	scope :default_photo, -> { where(default_photo: true )}
 	
 	def self.default_photo
 		where(default_photo: true)

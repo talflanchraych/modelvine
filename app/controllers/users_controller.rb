@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
     	flash[:success] = "Welcome to Model Vine!"
-      redirect_to @user
+      redirect_to edit_user_path(current_user)
     else
       render 'new'
     end
@@ -36,11 +36,23 @@ class UsersController < ApplicationController
 
   #Update a user
   def update
+    # Allows update of user without re-entering a password
+    params[:user].delete(:password) if params[:user][:password].blank?
+    @user = User.find(current_user.id)
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
     else
       render 'edit'
+    end
+  end
+
+  def manage_photos
+    if signed_in?
+      # Allow users to add photo's if they are logged in, through the home page. 
+      # This logic should really be moved somewhere else
+      @user_photo = current_user.user_photos.build
+      @feed_items = current_user.feed.paginate(page: params[:page])
     end
   end
 
@@ -52,11 +64,24 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def set_default_photo
+    # find the photo to be updated as default
+    photo = UserPhoto.find(params[:photo_id])
+    # if there is currently a default photo unset it
+    if photo.user.get_default_photo
+      photo.user.get_default_photo.update_attributes(default_photo: false)
+    end
+    # set the new default photo
+    photo.update_attributes(default_photo: true)
+    render text: "Default photo set successfully"
+  end
+
   private
 
+    #Rails 4.0 Strong Paramaters
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :zip_code, :type_of_user, :user_website)
     end
 
     # Before filters
