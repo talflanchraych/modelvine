@@ -27,17 +27,17 @@ class UserPhotosController < ApplicationController
 		@user_photo = current_user.user_photos.build(user_photo_params.except(:default_photo))
 		
 		if @user_photo.save
-			# if the photo was saved successfully and user do want to set it as default
+			# if the photo was saved successfully and user does want to set it as default
 			if params[:user_photo][:default_photo] == "1"
 				# unset old default photo and set current photo as default
 				current_user.get_default_photo.update_attributes(default_photo: false) if current_user.get_default_photo
 				@user_photo.update_attributes(default_photo: true)
 			end
 			flash[:success] = "Photo successfully added!"
-			# Since the User is logged in, the Root URL is changed
-			redirect_to root_url
+			# This needs to be updated to reflect Asset PipeLine
+			redirect_to "/manage_photos"
 		else
-			@feed_items = []
+			@user_photo_feed_items = []
 			render action: "new"
 		end
 	end
@@ -45,7 +45,7 @@ class UserPhotosController < ApplicationController
 	# DELETE /user_photos/1
 	def destroy
 		@user_photo.destroy
-		redirect_to root_url
+		redirect_to "/manage_photos"
 	end
 
 

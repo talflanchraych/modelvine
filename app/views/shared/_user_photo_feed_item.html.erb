@@ -1,0 +1,26 @@
+<li id="<%= user_photo_feed_item.id %>", data-user-id=<%= user_photo_feed_item.user.id%> >
+  <!-- Call (:medium) to display :medium size -->
+  <div>
+      <%= image_tag user_photo_feed_item.photo.url(:medium) %>
+  </div>
+  <span class="user">
+    <%= link_to user_photo_feed_item.user.name, user_photo_feed_item.user %>
+  </span>
+  <span class="caption"><%= user_photo_feed_item.caption %> | </span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(user_photo_feed_item.created_at) %> ago.
+  </span>
+
+  <label class="radio">
+    <%= radio_button_tag 'receive_updates', 'no', user_photo_feed_item.default_photo ? true : false, class: "set_default_photo" %>
+    <%= label_tag :default_photo %>
+  </label>
+
+  <div>Profile Picture? <%= user_photo_feed_item.default_photo %></div>
+  
+  <% if current_user?(user_photo_feed_item.user) %>
+    <%= link_to "delete", user_photo_feed_item, method: :delete,
+                                      data: { confirm: "Are you sure?" },
+                                      title: user_photo_feed_item.caption %>
+  <% end %>
+</li>

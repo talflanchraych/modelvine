@@ -30,6 +30,14 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  default_scope -> { order('created_at DESC') }
+
+  #Only Show Users on the User Index page, who have updated a name
+  scope :with_name, where("name <> ''")
+
+  #Breaks the :with_name scope when impleneted
+  scope :type_of_user_model, where(:type_of_user == "Model")
+
   # Sign in user
   def User.new_remember_token
     SecureRandom.urlsafe_base64
@@ -40,7 +48,7 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
-  def feed
+  def user_photo_feed
     # This is preliminary. See "Following users" for the full implementation.
     UserPhoto.where("user_id = ?", id)
     # The ? ensures that the id is properly escaped before being included in underlying SQL query

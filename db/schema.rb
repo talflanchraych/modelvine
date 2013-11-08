@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20131105180321) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.boolean  "default_photo"
+    t.boolean  "default_photo",      default: false
   end
 
   add_index "user_photos", ["user_id", "created_at"], name: "index_user_photos_on_user_id_and_created_at", using: :btree

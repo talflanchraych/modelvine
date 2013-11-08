@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   
   def index
     #Paginiate all the user with the default per page
-    @users = User.paginate(page: params[:page])
+    @users = User.with_name.paginate(page: params[:page])
   end
 
   #create a new user, but not save
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
-      redirect_to @user
+      redirect_to "/manage_photos"
     else
       render 'edit'
     end
@@ -50,9 +50,9 @@ class UsersController < ApplicationController
   def manage_photos
     if signed_in?
       # Allow users to add photo's if they are logged in, through the home page. 
-      # This logic should really be moved somewhere else
+      # This action may need to be moved to another controller
       @user_photo = current_user.user_photos.build
-      @feed_items = current_user.feed.paginate(page: params[:page])
+      @user_photo_feed_items = current_user.user_photo_feed.paginate(page: params[:page])
     end
   end
 

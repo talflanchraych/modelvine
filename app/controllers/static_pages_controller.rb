@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
 	  	# Allow users to add photo's if they are logged in, through the home page. 
 	  	# This logic should really be moved somewhere else
 	  	@user_photo = current_user.user_photos.build
-  		@feed_items = current_user.feed.paginate(page: params[:page])
+  		@user_photo_feed_items = current_user.user_photo_feed.paginate(page: params[:page])
   	end
   end
 
