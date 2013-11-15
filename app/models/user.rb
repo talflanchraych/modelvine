@@ -35,7 +35,10 @@ class User < ActiveRecord::Base
   #Only Show Users on the User Index page, who have updated a name
   scope :with_name, where("name <> ''")
 
-  #Breaks the :with_name scope when impleneted
+  #Only Show users that have been approved
+  scope :approved, where(approved: true)
+
+  #Breaks!! the :with_name scope when impleneted
   scope :type_of_user_model, where(:type_of_user == "Model")
 
   # Sign in user

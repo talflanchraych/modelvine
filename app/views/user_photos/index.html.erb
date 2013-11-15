@@ -3,7 +3,8 @@
 <% @user_photo.each do |user_photo| %>
 
   <div><%= image_tag user_photo.photo.url %></div>
-  <div><%= user_photo.caption %></div>
+  <div>Caption: <%= user_photo.caption %></div>
+  <div>User: <%= user_photo.user.name %></div>
 
     <%= link_to("Show", {:action => 'show', :id => user_photo.id}, :class => 'action show') %> 
     <br>
