@@ -1,30 +1,16 @@
 class UsersController < ApplicationController
   #Limit before filteres here
-  before_action :signed_in_user, only: [:edit, :update]
+  before_filter :authenticate_user!, only: [:edit, :update]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
   
   def index
     #Paginiate all the user with the default per page
-    @users = User.with_name.paginate(page: params[:page])
+    @users= User.all.paginate(page: params[:page])
+    #@users = User.approved.paginate(page: params[:page])
   end
 
-  #create a new user, but not save
-  def new
-  	@user = User.new
-  end
-
-  #Save to new user
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      sign_in @user
-    	flash[:success] = "Welcome to Model Vine!"
-      redirect_to edit_user_path(current_user)
-    else
-      render 'new'
-    end
-  end
+  ##Registation Contoller and Devise, handles singing up new users
 
   def show
   	@user = User.find(params[:id])
@@ -36,19 +22,25 @@ class UsersController < ApplicationController
 
   #Update a user
   def update
-    # Allows update of user without re-entering a password
-    params[:user].delete(:password) if params[:user][:password].blank?
     @user = User.find(current_user.id)
-    if @user.update_attributes(user_params)
+    if @user.update_without_password(user_params)
+      # create a new model(talent) instance for current user
+      user_type_type = params[:user][:type_of_user].constantize.create
+      @user.user_type_type = user_type_type
       flash[:success] = "Profile updated"
-      redirect_to "/manage_photos"
+      #type = user_type.class.name.underscore
+      #if current_user.user_type
+      redirect_to edit_model_path(current_user.user_type)
+      #else
+      #  redirect_to "/manage_photos"
+      #end
     else
       render 'edit'
     end
   end
 
   def manage_photos
-    if signed_in?
+    if user_signed_in?
       # Allow users to add photo's if they are logged in, through the home page. 
       # This action may need to be moved to another controller
       @user_photo = current_user.user_photos.build
@@ -88,7 +80,7 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      redirect_to(root_url) unless current_user
     end
 
     def admin_user

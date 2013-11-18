@@ -1,7 +1,7 @@
 <li id="<%= user_photo_feed_item.id %>", data-user-id=<%= user_photo_feed_item.user.id%> >
   <!-- Call (:medium) to display :medium size -->
   <div>
-      <%= image_tag user_photo_feed_item.photo.url(:medium) %>
+      <%= image_tag user_photo_feed_item.photo.url(:thumb) %>
   </div>
   <span class="user">
     <%= link_to user_photo_feed_item.user.name, user_photo_feed_item.user %>

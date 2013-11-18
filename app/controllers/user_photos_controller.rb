@@ -1,9 +1,8 @@
 class UserPhotosController < ApplicationController
-	# See signed_in_user method in the helpers/sessions controller
-	before_action :signed_in_user, only: [:create, :destroy]
+	before_filter :authenticate_user!, only: [:create, :destroy]
 	before_action :correct_user, only: :destroy
-		#Signed in users can create or destory photo's
-		#Anyone is allow to index (list all) of the photo's
+	#Signed in users can create or destory photo's
+	#Anyone is allow to index (list all) of the photo's
 
 	# GET /user_photos
 	def index

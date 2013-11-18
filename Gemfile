@@ -25,6 +25,7 @@ gem 'growl', '1.0.3'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'devise'
 
 #Attach pictures
 gem 'paperclip', '~> 3.0'
@@ -35,6 +36,10 @@ group :development do
   #View all table contents in the model
   gem 'annotate'
   gem 'pry-rails'
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-stack_explorer'
+  gem 'pry-debugger'
 end
 
 group :development, :test do

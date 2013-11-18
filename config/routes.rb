@@ -1,24 +1,29 @@
 FiscalFitness::Application.routes.draw do
+  devise_for :users, :controllers => { :registrations => "registrations" }
   # resources gives :users all RESTful routes
   resources :users do
     member do
       post :set_default_photo
     end
   end
+
+  resources :models
+  
   match '/manage_photos', to: 'users#manage_photos', via: 'get'
 
-  resources :sessions, only: [:new, :create, :destroy] 
+  # resources :sessions, only: [:new, :create, :destroy] 
   resources :user_photos
 
   # Home Page
   root  'static_pages#home'
   # Match URL with controller action. Specify specifically
-  match '/signup',  to: 'users#new',            via: 'get'
-  match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
+  # match '/signup',  to: 'users#new',            via: 'get'
+  # match '/signin',  to: 'sessions#new',         via: 'get'
+  # match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/developer',to: 'static_pages#developer', via: 'get'
+  match '/waitlist', to: 'static_pages#waitlist', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

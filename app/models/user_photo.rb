@@ -11,7 +11,7 @@
 #  photo_content_type :string(255)
 #  photo_file_size    :integer
 #  photo_updated_at   :datetime
-#  default_photo      :boolean
+#  default_photo      :boolean          default(FALSE)
 #
 
 class UserPhoto < ActiveRecord::Base
@@ -34,8 +34,4 @@ class UserPhoto < ActiveRecord::Base
 	#default_scope -> { where(default_photo: true)}
 	scope :default_photo, -> { where(default_photo: true )}
 	
-	def self.default_photo
-		where(default_photo: true)
-	end
-
 end

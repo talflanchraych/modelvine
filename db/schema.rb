@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131108190202) do
+ActiveRecord::Schema.define(version: 20131116194940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "models", force: true do |t|
+    t.date     "birth_date"
+    t.string   "gender"
+    t.integer  "height_feet"
+    t.integer  "height_inches"
+    t.integer  "weight"
+    t.string   "ethnicity"
+    t.string   "eye_color"
+    t.string   "hair_color"
+    t.text     "bio"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_photos", force: true do |t|
     t.string   "caption"
@@ -35,16 +49,27 @@ ActiveRecord::Schema.define(version: 20131108190202) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",                  default: false
     t.string   "zip_code"
     t.string   "type_of_user"
     t.string   "user_website"
-    t.boolean  "approved",        default: false
+    t.boolean  "approved",               default: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.integer  "user_type_id"
+    t.string   "user_type_type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
