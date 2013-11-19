@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   
   def index
     #Paginiate all the user with the default per page
-    @users= User.all.paginate(page: params[:page])
-    #@users = User.approved.paginate(page: params[:page])
+    #@users= User.all.paginate(page: params[:page])
+    @users = User.approved.paginate(page: params[:page])
   end
 
   ##Registation Contoller and Devise, handles singing up new users

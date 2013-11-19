@@ -12,7 +12,7 @@
       <%= render 'shared/error_messages', object: @model %>
 
       <%= f.label :birth_date %>
-      <%= date_select :model, :birth_date %>
+      <%= date_select :model, :birth_date, start_year: 1900 %>
 
       <%= f.label :gender %>
       <%= f.select :gender, [['Male','Male'], ['Female', 'Female']] %>

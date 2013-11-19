@@ -34,7 +34,7 @@ class UserPhotosController < ApplicationController
 			end
 			flash[:success] = "Photo successfully added!"
 			# This needs to be updated to reflect Asset PipeLine
-			redirect_to "/manage_photos"
+			redirect_to :back
 		else
 			@user_photo_feed_items = []
 			render action: "new"
@@ -44,7 +44,8 @@ class UserPhotosController < ApplicationController
 	# DELETE /user_photos/1
 	def destroy
 		@user_photo.destroy
-		redirect_to "/manage_photos"
+		#redirec to the current page
+		redirect_to :back
 	end
 
 
