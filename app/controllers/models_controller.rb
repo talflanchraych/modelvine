@@ -1,11 +1,11 @@
 class ModelsController < ApplicationController
 
+	before_filter :authenticate_user!
+
 	def edit
-		if user_signed_in?
-			@model = current_user.user_type
-			@user_photo = current_user.user_photos.build
+		@model = Model.find(params[:id])
+		@user_photo = current_user.user_photos.build
     	@user_photo_feed_items = current_user.user_photo_feed.paginate(page: params[:page])
-		end
 	end
 
 	def update
