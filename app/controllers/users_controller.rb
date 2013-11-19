@@ -22,15 +22,15 @@ class UsersController < ApplicationController
 
   #Update a user
   def update
-    @user = User.find(current_user.id)
+    @user = current_user
     if @user.update_without_password(user_params)
       # create a new model(talent) instance for current user
-      user_type_type = params[:user][:type_of_user].constantize.create
-      @user.user_type_type = user_type_type
+      user_type = params[:user][:type_of_user].constantize.create
+      @user.user_type = user_type
       flash[:success] = "Profile updated"
       #type = user_type.class.name.underscore
       #if current_user.user_type
-      redirect_to edit_model_path(current_user.user_type)
+      redirect_to edit_model_path(@user.user_type)
       #else
       #  redirect_to "/manage_photos"
       #end
