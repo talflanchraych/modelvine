@@ -43,7 +43,11 @@ class User < ActiveRecord::Base
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+  #Valudations on the Update page
   validates_presence_of :name, :zip_code, on: :update
+  validates_format_of :zip_code, 
+    with: /\A\d{5}-\d{4}|\A\d{5}\z/,
+    message: "should be in the form 12345 or 12345-1234"
 
   ###########
   ##SCOPING##
