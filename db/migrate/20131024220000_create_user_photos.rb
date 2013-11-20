@@ -4,6 +4,7 @@ class CreateUserPhotos < ActiveRecord::Migration
       t.string :caption
       t.integer :user_id
       t.attachment :photo
+      t.boolean :default_photo
 
       t.timestamps
     end
