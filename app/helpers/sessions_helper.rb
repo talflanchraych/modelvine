@@ -1,5 +1,21 @@
 module SessionsHelper
 
+  def current_user?(user)
+    user == current_user
+  end
+
+  #Friendly forwarding
+  def redirect_back_or(default)
+    redirect_to(session[:return_to] || default)
+    session.delete(:return_to)
+  end
+
+  #User with Friendly forwarding
+  def store_location
+    session[:return_to] = request.url if request.get?
+  end
+
+
   ##Lots of old Code here from Pre Devise
 	
  # def sign_in(user)
@@ -24,9 +40,7 @@ module SessionsHelper
   #   @current_user ||= User.find_by(remember_token: remember_token)
   # end
 
-  def current_user?(user)
-    user == current_user
-  end
+
 
   # before Filter to check if User is signed in
   # def signed_in_user
@@ -42,14 +56,4 @@ module SessionsHelper
   #   cookies.delete(:remember_token)
   # end
 
-  #Friendly forwarding
-  def redirect_back_or(default)
-    redirect_to(session[:return_to] || default)
-    session.delete(:return_to)
-  end
-
-  #User with Friendly forwarding
-  def store_location
-    session[:return_to] = request.url if request.get?
-  end
 end
