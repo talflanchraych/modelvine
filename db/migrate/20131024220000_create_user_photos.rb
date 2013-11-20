@@ -3,6 +3,7 @@ class CreateUserPhotos < ActiveRecord::Migration
     create_table :user_photos do |t|
       t.string :caption
       t.integer :user_id
+      t.attachment :photo
 
       t.timestamps
     end

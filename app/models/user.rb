@@ -35,8 +35,8 @@ class User < ActiveRecord::Base
   belongs_to :user_type, polymorphic: true
 
   #ensure uniquess by downcasing the email attribute
-	before_save { self.email = email.downcase }
-	before_create :create_remember_token
+	#before_save { self.email = email.downcase }
+	#before_create :create_remember_token
 
   #This validation is only important with the update action
 	#validates :name, presence: true, length: { maximum: 50 }
@@ -47,7 +47,8 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :zip_code, on: :update
   validates_format_of :zip_code, 
     with: /\A\d{5}-\d{4}|\A\d{5}\z/,
-    message: "should be in the form 12345 or 12345-1234"
+    message: "should be in the form 12345 or 12345-1234",
+    on: :update
 
   ###########
   ##SCOPING##
