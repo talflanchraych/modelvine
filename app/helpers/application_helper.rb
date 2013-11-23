@@ -9,4 +9,8 @@ module ApplicationHelper
       "#{base_title} | #{page_title}"
     end
   end
+
+  def is_default_photo?(photo_id)
+  	current_user.default_photo_id == photo_id
+  end
 end

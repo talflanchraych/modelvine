@@ -1,4 +1,9 @@
 <li>
+  <% if user.get_default_photo %>	
+  	<%= image_tag user.get_default_photo.photo.url (:thumb) %>
+  <% else %>
+  	<%= image_tag("thumb/missing.png")  %>
+  <% end %>
   <%= link_to user.name, user %>
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete,

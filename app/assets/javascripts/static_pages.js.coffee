@@ -8,9 +8,10 @@ jQuery ->
   	change: setDefaultPhoto
 
   	setDefaultPhoto= ->
+  		$('.notice').html("")
   		# do a ajax post to url /users/1/set_default_photo with params[:photo_id]
   		# get user id from li data-user-id=1 on _feed_item view
 	  	$.post '/users/' + $(this).closest('li').data('user-id')+ '/set_default_photo/',
 	  		photo_id: $(this).closest('li').attr('id')
 	  		# on success return a messgae
-	  		(data) -> $('body').append "Sucessfully set the deafult photo"
+	  		(data) -> $('.notice').html "Sucessfully set the deafult photo"

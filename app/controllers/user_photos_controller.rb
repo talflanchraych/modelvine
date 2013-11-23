@@ -23,14 +23,12 @@ class UserPhotosController < ApplicationController
 	def create
 		# Create a instance of photos, fidn the current user and build a new photo
 		# build the user_photo with params without default_photo value
-		@user_photo = current_user.user_photos.build(user_photo_params.except(:default_photo))
+		@user_photo = current_user.user_photos.build(user_photo_params)
 		
 		if @user_photo.save
 			# if the photo was saved successfully and user does want to set it as default
-			if params[:user_photo][:default_photo] == "1"
-				# unset old default photo and set current photo as default
-				current_user.get_default_photo.update_attributes(default_photo: false) if current_user.get_default_photo
-				@user_photo.update_attributes(default_photo: true)
+			if params[:default_photo] == "1" || current_user.user_photos.size == 1
+				current_user.update_attributes(default_photo_id: @user_photo.id)
 			end
 			flash[:success] = "Photo successfully added!"
 			# This needs to be updated to reflect Asset PipeLine
@@ -54,7 +52,7 @@ class UserPhotosController < ApplicationController
 		# STRONG PARAMATERS, Rails 4; This allows the database colum caption to be uploaded through the web
 		# This is the replacement for attribute assesible in Rails 3.2 
 		def user_photo_params
-			params.require(:user_photo).permit(:caption, :photo, :default_photo)
+			params.require(:user_photo).permit(:caption, :photo)
 		end
 
 		# Relates to the destroy action 

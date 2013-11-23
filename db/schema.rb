@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20131123190432) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "businesses", force: true do |t|
     t.text   "bio"
     t.string "website"
@@ -58,12 +55,15 @@ ActiveRecord::Schema.define(version: 20131123190432) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+<<<<<<< HEAD
     t.boolean  "default_photo"
+=======
+>>>>>>> 51fc3ccda19503167d2b634e4d607573c472243d
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "user_photos", ["user_id", "created_at"], name: "index_user_photos_on_user_id_and_created_at", using: :btree
+  add_index "user_photos", ["user_id", "created_at"], name: "index_user_photos_on_user_id_and_created_at"
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -86,9 +86,11 @@ ActiveRecord::Schema.define(version: 20131123190432) do
     t.string   "last_sign_in_ip"
     t.integer  "user_type_id"
     t.string   "user_type_type"
+    t.integer  "default_photo_id"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

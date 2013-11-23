@@ -90,7 +90,7 @@ class User < ActiveRecord::Base
 
   def get_default_photo
     # Look at the current user, then their photos, then scoping the default_photo in in user_photo model
-    self.user_photos.default_photo.first
+    self.user_photos.find_by_id(default_photo_id)
   end
 
   private

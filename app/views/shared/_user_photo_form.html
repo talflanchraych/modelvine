@@ -6,8 +6,8 @@
     <%= f.text_area :caption, placeholder: "Add a caption to the photo" %>
 
     <label class="checkbox">
-      <%= f.check_box :default_photo %>
-      <%= f.label :default_photo, "Would you like this to be your primary photo?" %>
+      <%= check_box_tag :default_photo %>
+      <%= label_tag :default_photo, "Would you like this to be your primary photo?" %>
     </label>
 
   </div>
