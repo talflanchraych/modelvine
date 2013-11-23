@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131116194940) do
+ActiveRecord::Schema.define(version: 20131123185544) do
 
   create_table "models", force: true do |t|
     t.date     "birth_date"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20131116194940) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.boolean  "default_photo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -62,6 +61,7 @@ ActiveRecord::Schema.define(version: 20131116194940) do
     t.string   "last_sign_in_ip"
     t.integer  "user_type_id"
     t.string   "user_type_type"
+    t.integer  "default_photo_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

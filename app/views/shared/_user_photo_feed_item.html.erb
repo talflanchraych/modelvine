@@ -12,11 +12,11 @@
   </span>
 
   <label class="radio">
-    <%= radio_button_tag 'receive_updates', 'no', user_photo_feed_item.default_photo ? true : false, class: "set_default_photo" %>
-    <%= label_tag :default_photo %>
+    <%= radio_button_tag 'receive_updates', 'no', is_default_photo?(user_photo_feed_item.id) ? true : false, class: "set_default_photo" %>
+    <%= label_tag "Set As Profile Picture" %>
   </label>
 
-  <div>Profile Picture? <%= user_photo_feed_item.default_photo %></div>
+  <div>Profile Picture? <%= is_default_photo?(user_photo_feed_item.id) ? "Yes": "No" %></div>
   
   <% if current_user?(user_photo_feed_item.user) %>
     <%= link_to "delete", user_photo_feed_item, method: :delete,

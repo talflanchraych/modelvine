@@ -61,12 +61,12 @@ class UsersController < ApplicationController
   def set_default_photo
     # find the photo to be updated as default
     photo = UserPhoto.find(params[:photo_id])
+    user = User.find(params[:id])
     # if there is currently a default photo unset it
-    if photo.user.get_default_photo
-      photo.user.get_default_photo.update_attributes(default_photo: false)
+    if photo
+      user.update_attributes(default_photo_id: photo.id)
     end
     # set the new default photo
-    photo.update_attributes(default_photo: true)
     render text: "Default photo set successfully"
   end
 
