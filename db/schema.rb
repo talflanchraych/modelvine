@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20131123190432) do
   create_table "models", force: true do |t|
     t.date     "birth_date"
     t.string   "gender"
-    t.integer  "height"
+    t.float    "height"
     t.integer  "weight"
     t.string   "ethnicity"
     t.string   "eye_color"
@@ -54,13 +54,13 @@ ActiveRecord::Schema.define(version: 20131123190432) do
   create_table "user_photos", force: true do |t|
     t.string   "caption"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.boolean  "default_photo",      default: false
+    t.boolean  "default_photo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "user_photos", ["user_id", "created_at"], name: "index_user_photos_on_user_id_and_created_at", using: :btree
@@ -68,14 +68,13 @@ ActiveRecord::Schema.define(version: 20131123190432) do
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "remember_token"
-    t.boolean  "admin",                  default: false
     t.string   "zip_code"
     t.string   "type_of_user"
     t.string   "user_website"
+    t.boolean  "admin",                  default: false
     t.boolean  "approved",               default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -90,7 +89,6 @@ ActiveRecord::Schema.define(version: 20131123190432) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
