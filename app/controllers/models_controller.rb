@@ -4,7 +4,6 @@ class ModelsController < ApplicationController
 
 	def edit
 		@model = current_user.user_type
-		@model = Model.find(params[:id])
 		@user_photo = current_user.user_photos.build
     	@user_photo_feed_items = current_user.user_photo_feed.paginate(page: params[:page])
 	end

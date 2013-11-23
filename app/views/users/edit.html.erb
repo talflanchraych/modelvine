@@ -12,12 +12,17 @@
       <%= f.label :zip_code, "Location" %>
       <%= f.text_field :zip_code, placeholder: "Zip Code" %>
 
-      <%= f.label :type_of_user, "What type of user are you?" %>
-      <%= f.select :type_of_user, [['Model', 'Model'],
+      <%= f.label :user_type_type, "What type of user are you?" %>
+      <% if @user.user_type %>
+        <%= f.text_field :user_type_type, placeholder: @user.user_type_type, readonly: true %>
+      <% else %>
+        <%= f.select :user_type_type,
+                                   [['Model', 'Model'],
                                    ['Photographer', 'Photographer'],
                                    ['Business', 'Business'], 
                                    ['Make Up Artist', 'Make_up_artists'],
                                    ['Agency', 'Agency']], placeholder: "What Type of user are you?" %>
+      <% end %>
 
       <%= f.label :user_website, "Do you have your own web site?" %>
       <%= f.text_field :user_website, placeholder: "Website (Optional)" %>

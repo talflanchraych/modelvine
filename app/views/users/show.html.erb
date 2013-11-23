@@ -5,6 +5,9 @@
 <div>Email: <%= @user.email %></div>
 <div>Location: <%= @user.zip_code %></div>
 <div>Website: <%= @user.user_website %> </div>
+<% @user_type_attributes.each do |attribute| %>
+	<div> <%= attribute[0].titleize %>: <%= attribute[1] %> </div>
+<% end %>
 
 <div>
   <h3>Photo's <%= @user.user_photos.count %></h3>

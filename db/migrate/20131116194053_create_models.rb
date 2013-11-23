@@ -3,7 +3,7 @@ class CreateModels < ActiveRecord::Migration
     create_table :models do |t|
     	t.date :birth_date
     	t.string :gender
-    	t.integer :height
+    	t.float :height
     	t.integer :weight
     	t.string :ethnicity
     	t.string :eye_color

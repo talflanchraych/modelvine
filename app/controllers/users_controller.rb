@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
     @user_photos = @user.user_photos
+    @user_type_attributes = @user.user_type.attributes.reject {|x| x.include?("_at") || x.include?("id") }
   end
 
   def edit
@@ -25,8 +26,9 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update_without_password(user_params)
       # create a new model(talent) instance for current user
-      user_type = params[:user][:type_of_user].constantize.create
+      user_type = @user.user_type || params[:user][:user_type_type].constantize.create
       @user.user_type = user_type
+      @user.save
       flash[:success] = "Profile updated"
       #type = user_type.class.name.underscore
       #if current_user.user_type
