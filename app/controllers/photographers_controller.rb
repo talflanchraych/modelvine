@@ -1,6 +1,5 @@
 class PhotographersController < ApplicationController
 	def edit
-		binding.pry
 		@photographer = Photographer.find(params[:id])
 	end
 
