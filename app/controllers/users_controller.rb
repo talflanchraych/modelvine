@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   #Update a user
@@ -30,12 +31,7 @@ class UsersController < ApplicationController
       @user.user_type = user_type
       @user.save
       flash[:success] = "Profile updated"
-      #type = user_type.class.name.underscore
-      #if current_user.user_type
-      redirect_to edit_model_path(@user.user_type)
-      #else
-      #  redirect_to "/manage_photos"
-      #end
+      redirect_to send("edit_#{params[:user][:user_type_type].underscore}_path", @user.user_type)
     else
       render 'edit'
     end
