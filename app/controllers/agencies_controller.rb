@@ -1,4 +1,7 @@
 class AgenciesController < ApplicationController
+	
+	before_filter :authenticate_user!
+
 	def edit
 		@agency = Agency.find(params[:id])
 	end
