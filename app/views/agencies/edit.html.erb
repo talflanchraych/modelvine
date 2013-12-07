@@ -1,0 +1,22 @@
+<% provide(:title, "Edit Agency profile") %>
+<h1>Agency Specific Information</h1>
+
+<div class="row">
+
+  <div class="span6">
+    <%= form_for(@agency) do |f| %>
+      <%= render 'shared/error_messages', object: @agency %>
+
+      <%= f.label :bio %>
+      <%= f.text_field :bio %>
+
+      <%= f.label :website %>
+      <%= f.text_field :website %>
+
+      <%= f.submit "Next", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+  </div>
+
+</div>
+
