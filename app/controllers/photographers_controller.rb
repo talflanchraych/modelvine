@@ -1,4 +1,7 @@
 class PhotographersController < ApplicationController
+	
+	before_filter :authenticate_user!
+
 	def edit
 		@photographer = Photographer.find(params[:id])
 	end
