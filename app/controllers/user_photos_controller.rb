@@ -35,7 +35,9 @@ class UserPhotosController < ApplicationController
 			redirect_to :back
 		else
 			@user_photo_feed_items = []
-			render action: "new"
+			flash[:alert] = "Photo not added!"
+			# render action: "new"
+			redirect_to :back
 		end
 	end
 
