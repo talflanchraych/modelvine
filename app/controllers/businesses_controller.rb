@@ -1,4 +1,7 @@
 class BusinessesController < ApplicationController
+  
+  before_filter :authenticate_user!
+
   def edit
     @business = Business.find(params[:id])
   end

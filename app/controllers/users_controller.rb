@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   #Update a user
   def update
     @user = current_user
-    binding.pry
     if @user.update_without_password(user_params)
       # create a new model(talent) instance for current user
       user_type = @user.user_type || params[:user][:user_type_type].constantize.create

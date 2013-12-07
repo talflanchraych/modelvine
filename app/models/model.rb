@@ -20,7 +20,9 @@ class Model < ActiveRecord::Base
 	has_one :user, as: :user_type
 
   validates :birth_date, :gender, :height, :weight, :ethnicity,
-    :eye_color, :hair_color, :bio, presence: true
-  validates_length_of :bio, :minimum => 100
+    :eye_color, :hair_color, :bio, presence: true,
+    on: :update
+  validates :bio, length: { minimum: 100 },
+    on: :update
 
 end
