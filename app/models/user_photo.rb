@@ -11,7 +11,6 @@
 #  photo_content_type :string(255)
 #  photo_file_size    :integer
 #  photo_updated_at   :datetime
-#  default_photo      :boolean          default(FALSE)
 #
 
 class UserPhoto < ActiveRecord::Base

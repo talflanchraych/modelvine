@@ -24,6 +24,7 @@
 #  last_sign_in_ip        :string(255)
 #  user_type_id           :integer
 #  user_type_type         :string(255)
+#  default_photo_id       :integer
 #
 
 class User < ActiveRecord::Base
