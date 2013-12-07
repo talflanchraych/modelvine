@@ -1,7 +1,7 @@
 <% provide(:title, @user.name) %>
 <h1><%= @user.name %></h1> 
 
-<h3><%= @user.user_type_type %>'s Information:</h3>
+<h3><%= @user.user_type_type.titleize %>'s Information:</h3>
 <div>Email: <%= @user.email %></div>
 <div>Location: <%= @user.zip_code %></div>
 <div>Website: <%= @user.user_website %> </div>
