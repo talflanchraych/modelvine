@@ -15,6 +15,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '~>4.0.0'
 gem 'simple_form'
+gem 'better_errors'
 #Create fake users for development and testing purposes
 gem 'faker', '1.1.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
