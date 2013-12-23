@@ -5,6 +5,9 @@ FiscalFitness::Application.routes.draw do
     member do
       post :set_default_photo
     end
+    collection do
+      post :search
+    end
   end
 
   resources :models, :photographers, :agencies, :businesses, :makeup_artists

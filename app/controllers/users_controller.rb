@@ -37,6 +37,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    binding.pry
+  end
+
   def manage_photos
     if user_signed_in?
       # Allow users to add photo's if they are logged in, through the home page. 

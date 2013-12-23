@@ -25,7 +25,7 @@ gem 'jbuilder', '1.0.2'
 gem 'growl', '1.0.3'
 
 # Use postgresql as the database for Active Record
-gem 'pg'
+# gem 'pg'
 gem 'devise'
 
 #Attach pictures
@@ -34,6 +34,7 @@ gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
 
 group :development do
+  gem 'sqlite3'
   #View all table contents in the model
   gem 'annotate'
   gem 'pry-rails'
