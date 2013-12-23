@@ -45,7 +45,16 @@ class UsersController < ApplicationController
     # and to map the user associated with model object
     # so we now have an array of all users are models
     # and reject(to filter out) all users does not have a matched zip code
-    @users = user_type.constantize.all.reject{|x| x.user.zip_code != zip_code }.map{|x| x.user}.paginate(:page => 1, :per_page => 10)
+    if user_type == "All"
+      @users = User.all
+    else
+      @users = user_type.constantize.all.collect{|x| x.user}
+    end
+    if zip_code.blank?
+      @users = @users.paginate(:page => 1)
+    else
+      @users = @users.reject{|x| x.zip_code != zip_code }.paginate(:page => 1)
+    end
     render 'index'
   end
 

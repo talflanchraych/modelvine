@@ -68,6 +68,8 @@ class User < ActiveRecord::Base
   #Breaks!! the :with_name scope when impleneted
   scope :type_of_user_model, -> { where(:type_of_user == "Model") }
 
+  scope :recently_updated, -> { unscoped.order('updated_at DESC') }
+
   ################
   ##User Methods##
   ################

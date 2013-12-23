@@ -26,6 +26,7 @@ class UserPhotosController < ApplicationController
 		@user_photo = current_user.user_photos.build(user_photo_params)
 		
 		if @user_photo.save
+			current_user.touch
 			# if the photo was saved successfully and user does want to set it as default
 			if params[:default_photo] == "1" || current_user.user_photos.size == 1
 				current_user.update_attributes(default_photo_id: @user_photo.id)

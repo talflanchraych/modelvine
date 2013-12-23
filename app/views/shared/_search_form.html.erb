@@ -2,11 +2,14 @@
   <%= form_tag search_users_path do %>
     <%= label_tag :user_type %>
     <%= select "search", "user_type" , 
-                                     [['Model', 'Model'],
-                                     ['Photographer', 'Photographer'],
-                                     ['Business', 'Business'], 
-                                     ['Make Up Artist', 'MakeupArtist'],
-                                     ['Agency', 'Agency']] %>
+                                     [
+                                       ['All user types', 'All'],
+                                       ['Model', 'Model'],
+                                       ['Photographer', 'Photographer'],
+                                       ['Business', 'Business'], 
+                                       ['Make Up Artist', 'MakeupArtist'],
+                                       ['Agency', 'Agency']
+                                     ] %>
     <%= label_tag :location %>
     <%= text_field :search, :zip_code %>
      <%= submit_tag "Search Users", :name => nil %>
