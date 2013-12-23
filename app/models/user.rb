@@ -94,6 +94,10 @@ class User < ActiveRecord::Base
     self.user_photos.find_by_id(default_photo_id)
   end
 
+  def get_regular_photo
+    self.user_photos.reject{|x| x.id == self.default_photo_id}.sort_by(&:created_at).reverse!.first(3)
+  end
+
   private
 
     # Automatically keep users signed in
