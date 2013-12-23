@@ -31,9 +31,6 @@ namespace :db do
       u.user_type_type = "Model"
       u.user_type_id = model.id
       u.save
-      user_photo = u.user_photos.new
-      user_photo.photo = File.open(Dir.glob(File.join(Rails.root, 'public', 'sample_images','*')).sample)
-      user_photo.save
     end
   end
 end
