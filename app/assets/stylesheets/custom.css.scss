@@ -85,6 +85,7 @@ p {
 /* footer */
 
 footer {
+  clear: both;
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $grayMediumLight;
@@ -159,4 +160,8 @@ input {
       border-bottom: 1px solid $grayLighter;
     }
   }
+}
+
+.search_box {
+  float: right;
 }
