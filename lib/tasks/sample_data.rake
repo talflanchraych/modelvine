@@ -5,14 +5,14 @@ namespace :db do
                  email: "surgentt@gmail.com",
                  password: "password123",
                  password_confirmation: "password123",
-                 zipcode: 19333,
+                 zip_code: 19333,
                  admin: true,
                  approved: true)
     User.create!(name: "Jinru Wu",
                  email: "woodbleak@gmail.com",
                  password: "password123",
                  password_confirmation: "password123",
-                 zipcode: 11219,
+                 zip_code: 11219,
                  admin: true,
                  approved: true)
     99.times do |n|

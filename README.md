@@ -12,6 +12,7 @@ Things you may want to cover:
 
 * Run faker Gem
 - http://ruby.railstutorial.org/chapters/updating-showing-and-deleting-users#top
+- bundle exec rake db:reset
 - bundle exec rake db:populate
 
 
