@@ -15,7 +15,8 @@ FiscalFitness::Application.routes.draw do
   resources :user_photos
 
   # Home Page
-  root  'static_pages#home'
+  root  'static_pages#home' 
+
   # Match URL with controller action. Specify specifically
   # match '/signup',  to: 'users#new',            via: 'get'
   # match '/signin',  to: 'sessions#new',         via: 'get'

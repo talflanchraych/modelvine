@@ -2,7 +2,17 @@
 
 <!-- See helpers/sessions to sign_in? method -->
 <% if signed_in? %>
-  <h3>Your Personalized Feed Will Appear Here</h3> 
+  <h1>Personalized Home Feed</h1>
+
+  <%= will_paginate %>
+
+  <ul class="users">
+    <% @users.each do |user| %>
+        <%= render user %>
+    <% end %>
+  </ul>
+
+  <%= will_paginate %>
 
 <% else %>
 
