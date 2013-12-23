@@ -5,7 +5,7 @@
       <%= image_tag("thumb/missing.png")  %>
     <% end %>
     <%= link_to user.name, user %>
-    <% user.user_photos.each do |x| %>
+    <% user.get_regular_photo.each do |x| %>
       <%= image_tag x.photo.url (:thumb), class: 'other_photos' %>
     <% end %>
   <% if current_user.admin? && !current_user?(user) %>
