@@ -46,9 +46,9 @@ class UsersController < ApplicationController
     # so we now have an array of all users are models
     # and reject(to filter out) all users does not have a matched zip code
     if user_type == "All"
-      @users = User.all
+      @users = User.approved
     else
-      @users = user_type.constantize.all.collect{|x| x.user}
+      @users = user_type.constantize.all.collect{|x| x.user}.approved
     end
     if zip_code.blank?
       @users = @users.paginate(:page => 1)
