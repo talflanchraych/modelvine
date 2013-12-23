@@ -6,15 +6,13 @@
 
     <%= will_paginate @users %>
 
-    <ul class="users span4">
+    <!-- html and css needs to be cleaned up here -->
+    <ul class="users span8">
       <% @users.each do |user| %>
-          <%= render user %>
-          <% user.user_photos.each do |x| %>
-            <span class="span4"><%= image_tag x.photo.url (:thumb) %></span>
-          <% end %>
+        <%= render user %>
       <% end %>
     </ul>
-    <%= will_paginate @users %>
+    <%= will_paginate @users, class: 'pagination span8' %>
 
   </div>
 

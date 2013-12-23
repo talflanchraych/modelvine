@@ -25,7 +25,7 @@ gem 'jbuilder', '1.0.2'
 gem 'growl', '1.0.3'
 
 # Use postgresql as the database for Active Record
-# gem 'pg'
+gem 'pg'
 gem 'devise'
 
 #Attach pictures
