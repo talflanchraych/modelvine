@@ -38,7 +38,15 @@ class UsersController < ApplicationController
   end
 
   def search
-    binding.pry
+    # this will give us a string of user type, "Model"
+    user_type = params[:search][:user_type]
+    zip_code = params[:search][:zip_code]
+    # and needs to be constantized(to turn a string into a ruby class)
+    # and to map the user associated with model object
+    # so we now have an array of all users are models
+    # and reject(to filter out) all users does not have a matched zip code
+    @users = user_type.constantize.all.reject{|x| x.user.zip_code != zip_code }.map{|x| x.user}.paginate(:page => 1, :per_page => 10)
+    render 'index'
   end
 
   def manage_photos
