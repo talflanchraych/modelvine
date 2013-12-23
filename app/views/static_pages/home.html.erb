@@ -4,15 +4,20 @@
 <% if signed_in? %>
   <h1>Personalized Home Feed</h1>
 
-  <%= will_paginate %>
+    <%= will_paginate @users %>
 
-  <ul class="users">
-    <% @users.each do |user| %>
-        <%= render user %>
-    <% end %>
-  </ul>
+    <ul class="users span4">
+      <% @users.each do |user| %>
+          <%= render user %>
+          <% user.user_photos.each do |x| %>
+            <span class="span4"><%= image_tag x.photo.url (:thumb) %></span>
+          <% end %>
+      <% end %>
+    </ul>
 
-  <%= will_paginate %>
+    <%= will_paginate @users %>
+
+  </div>
 
 <% else %>
 
