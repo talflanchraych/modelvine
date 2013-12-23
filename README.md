@@ -10,6 +10,11 @@ application up and running.
 
 Things you may want to cover:
 
+* Run faker Gem
+- http://ruby.railstutorial.org/chapters/updating-showing-and-deleting-users#top
+- bundle exec rake db:populate
+
+
 * Branching
   - There are two branches while I decide if I want to use bootstrap or not. 
   1. Git checkout "No_Bootstrap"
