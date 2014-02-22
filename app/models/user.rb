@@ -35,14 +35,9 @@ class User < ActiveRecord::Base
 	has_many :user_photos, :dependent => :destroy
   belongs_to :user_type, polymorphic: true
 
-  #ensure uniquess by downcasing the email attribute
-	#before_save { self.email = email.downcase }
-	#before_create :create_remember_token
-
-  #This validation is only important with the update action
-	#validates :name, presence: true, length: { maximum: 50 }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
+
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   #Valudations on the Update page
   validates_presence_of :name, :zip_code, on: :update
