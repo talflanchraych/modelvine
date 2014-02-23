@@ -1,18 +1,103 @@
 <% provide(:title, @user.name) %>
-<h1><%= @user.name %></h1> 
+<section class="profile">
+	<div class="avatar" style=<%="background-image:url('#{@user.get_default_photo.photo.url}');"%>></div>
+	<div class="userDetails">
+		<p class="name"> <%= @user.name %> </p>
+		<p class="city"> <%= @user.zip_code %> </p>
+		<p> <%= @user.age %> years old</p>
+		<p> <%= link_to @user.user_website %> </p>
+	</div>
+	<div class="clear"></div>
+	<div class="follow">
+		<div class="following">
+			<p>7,304 <small>following</small></p>
+		</div>
+		<div class="followers">
+			<p>184 <small>followers</small></p>
+		</div>
+		<a href="" class="btn"><div class="ico"></div>Follow</a>
+	</div>
+</section>
+<article class="content gridView">
+	<aside>
+		<h2>Bio</h2>
+		<p><%= @user.user_type.bio %>...</p>
+		<p class="more"><a href="">Read More</a></p>
 
-<h3><%= @user.user_type_type.titleize %>'s Information:</h3>
-<div>Email: <%= @user.email %></div>
-<div>Location: <%= @user.zip_code %></div>
-<div>Website: <%= @user.user_website %> </div>
-<% @user_type_attributes.each do |attribute| %>
-	<div> <%= attribute[0].titleize %>: <%= attribute[1] %> </div>
-<% end %>
+		<h2>General statistics</h2>
+		<ul class="statistics">
+			<li class="size">
+				<div class="long">
+					<div class="short">
+						<p class="label">Height</p>
+						<p> <%= @user.user_type.height %> </p>
+					</div>
+					<div class="short">
+						<p class="label">Weight</p>
+						<p> <%= @user.user_type.weight %> </p>
+					</div>
+				</div>
+			</li>
+			<li class="height">
+				<div class="long">
+					<div class="short">
+						<p class="label">Size</p>
+						<p> <%= @user.user_type.measurements %> </p>
+					</div>
+					<div class="short">
+						<p class="label">Cup</p>
+						<p> <%= @user.user_type.cup %> </p>
+					</div>
+				</div>
+			</li>
+			<li class="hair">
+				<div class="long">
+					<p class="label">Hair</p>
+					<p> <%= @user.user_type.hair_color %> </p>
+				</div>
+			</li>
+			<li class="dress">
+				<div class="long">
+					<div class="short">
+						<p class="label">Dress size</p>
+						<p> <%= @user.user_type.dress_size %> </p>
+					</div>
+					<div class="short">
+						<p class="label">Shoe size</p>
+						<p> <%= @user.user_type.shoe_size %> </p>
+					</div>
+				</div>
+			</li>
+			<li class="colors">
+				<div class="long">
+					<div class="short">
+						<p class="label">Eye color</p>
+						<p> <%= @user.user_type.eye_color %> </p>
+					</div>
+					<div class="short">
+						<p class="label">Ethnicity</p>
+						<p> <%= @user.user_type.ethnicity %> </p>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<h2>Skills</h2>
+		<ul class="skills">
+			<li><a href="">Fashion / Editorial</a></li>
+			<li><a href="">Runway</a></li>
+			<li><a href="">Sport</a></li>
+			<li><a href="">Casual</a></li>
+			<li><a href="">Swimwear</a></li>
+			<li class="more"><a href="">...and 8 more</a></li>
+			<li class="clear"></li>
+		</ul>
 
-<div>
-  <h3>Photo's <%= @user.user_photos.count %></h3>
-  <div>
-    <!-- This will only show to defualt picture -->
-    <%= render @user_photos %>  
-  </div>
-</div>
+		<h2>Invited by Jane Doe</h2>
+	</aside>
+
+	<section class="body">
+		<div class="grid">
+			<%= render @user_photos %> 
+		</div>
+	</section>
+</article>

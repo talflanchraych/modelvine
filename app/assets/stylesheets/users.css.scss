@@ -1,3 +1,36 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body.users_show{
+	aside h2{
+		text-align: left;
+	}
+	article.content.gridView {
+		min-height: 699px;
+		margin-left: 0;
+	}
+	p.label {
+		background: none;
+		text-shadow: 0 1px 1px #222222;
+	}
+	section.profile {
+		margin-left: 0;
+	}
+	section.body {
+		background: inherit;
+		span.timestamp {
+			color: white;
+		}
+	}
+}
+
+body.users_invite {
+	label {
+		color: white;
+	}
+	color: white;
+}
+
+body.users_generate_invites {
+	color: white;
+}

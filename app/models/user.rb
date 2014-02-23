@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 	has_many :user_photos, :dependent => :destroy
+  has_many :access_codes
   belongs_to :user_type, polymorphic: true
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -93,6 +94,12 @@ class User < ActiveRecord::Base
 
   def get_regular_photo
     self.user_photos.reject{|x| x.id == self.default_photo_id}.sort_by(&:created_at).reverse!.first(3)
+  end
+
+  def age
+    dob = user_type.birth_date
+    now = Time.now.utc.to_date
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
   private

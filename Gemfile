@@ -10,6 +10,7 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 
 gem 'jquery-rails', '2.2.1'
+gem 'jquery-ui-rails'
 gem 'turbolinks', '1.1.1'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '2.1.1'

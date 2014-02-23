@@ -1,46 +1,19 @@
-<!-- <header>
+<header>
   <div class="content">
     <div class="left">
       <%= link_to "", root_path, class: "logo" %>
     </div>
     <div class="right">
-      <a href="" class="buttonLink green">Sign Up</a>
-      
-      <a href="" class="signin">Sign In</a>
-      <a href="">Browse Models</a>
-    </div>
-  </div>
-</header> -->
-
-<!-- Code prior to front end help -->
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= link_to "Model Vine", root_path, id: "logo" %>
-      <nav>
-        <ul class="nav pull-right">
-          <li><%= link_to "Home", root_path %></li>
-          <% if signed_in? %>
-            <li><%= link_to "Search", users_path %></li>
-            <li><%= link_to "Manage Photos", "/manage_photos" %></li>
-            <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Account <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Profile", current_user %></li>
-                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>
-                </li>
-              </ul>
-            </li>
-          <% else %>
-            <li><%= link_to "Sign in", new_user_session_path %></li>
-          <% end %>
-        </ul>
-      </nav>
+      <% if signed_in? %>
+        <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>
+        <%= link_to "Profile", current_user %>
+        <%= link_to "Invite", invite_users_path %>
+        <%= link_to "Search", users_path %>
+        <%= link_to "Manage Photos", "/manage_photos" %>    
+      <% else %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "buttonLink green" %>
+        <%= link_to "Sign in", new_user_session_path, class: "signin" %>
+      <% end %> 
     </div>
   </div>
 </header>

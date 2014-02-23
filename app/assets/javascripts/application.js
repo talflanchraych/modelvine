@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require_tree ../../../vendor/assets/javascripts/fancybox
+//= require ../../../vendor/assets/javascripts/freewall
+//= require jquery.ui.all
 //= require bootstrap
 //= require turbolinks
 //= require_tree .

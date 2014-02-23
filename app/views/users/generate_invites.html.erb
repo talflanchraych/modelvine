@@ -1,0 +1,15 @@
+Generated Access Codes:
+<table>
+	<tbody>
+		<tr>
+			<th> Access Code </th>
+			<th> Used </th>
+		</tr>
+		<% @access_codes.each do |ac| %>
+			<tr>
+				<th> <%= ac.access_code %> </th>
+				<th> <%= ac.used %> </th>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
