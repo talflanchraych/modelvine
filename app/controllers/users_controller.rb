@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   #Limit before filteres here
-  before_filter :authenticate_user!, only: [:edit, :update]
+  before_filter :authenticate_user!, only: [:edit, :update, :invite]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
   
@@ -34,6 +34,18 @@ class UsersController < ApplicationController
       redirect_to send("edit_#{params[:user][:user_type_type].underscore}_path", @user.user_type)
     else
       render 'edit'
+    end
+  end
+
+  def invite
+    @access_codes = current_user.access_codes
+  end
+
+  def generate_invites
+    number_of_invites = params[:number_of_invites][:number_of_invites].to_i
+    @access_codes = []
+    number_of_invites.times do
+      @access_codes.unshift current_user.access_codes.create
     end
   end
 
