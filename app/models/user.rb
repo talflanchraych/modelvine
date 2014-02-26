@@ -96,6 +96,7 @@ class User < ActiveRecord::Base
     self.user_photos.reject{|x| x.id == self.default_photo_id}.sort_by(&:created_at).reverse!.first(3)
   end
 
+  # What is this method doing?
   def age
     dob = user_type.birth_date
     now = Time.now.utc.to_date
