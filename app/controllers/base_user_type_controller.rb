@@ -6,7 +6,6 @@ class BaseUserTypeController < ApplicationController
 
   def edit
     # Whenever we need to set @model, we use the folling line to create it
-    ## Fix the view
     instance_variable_set("@#{params[:controller].singularize}".to_sym, current_user.user_type)
     @user_photo = current_user.user_photos.build
     @user_photo_feed_items = current_user.user_photo_feed.paginate(page: params[:page])
@@ -23,15 +22,9 @@ class BaseUserTypeController < ApplicationController
     @user_photo = current_user.user_photos.build
     @user_photo_feed_items = current_user.user_photo_feed.paginate(page: params[:page])
 
-    ##Update based on strong paramets in the controller actions
+    ##Update based on strong parameters in the controller actions
     if @base_user_type.update_attributes(user_type_params)
-      if current_user.approved == false
-        #If user isn't approved go to waitlies
-        redirect_to waitlist_path 
-      else
-        #If approved redirect user to their home page
-        redirect_to current_user
-      end
+      redirect_to current_user
     else
       render 'edit'
     end 

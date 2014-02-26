@@ -4,12 +4,42 @@
       <%= link_to "", root_path, class: "logo" %>
     </div>
     <div class="right">
-      <a href="" class="buttonLink green">Sign Up</a>
-      <a href="" class="signin">Sign In</a>
-      <a href="">Browse Models</a>
+      <% if signed_in? %>
+        <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>
+        <%= link_to "Profile", current_user %>
+        <%= link_to "Invite", invite_users_path %>
+        <%= link_to "Search", users_path %>
+        <%= link_to "Manage Photos", "/manage_photos" %>    
+      <% else %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "buttonLink green" %>
+        <%= link_to "Sign in", new_user_session_path, class: "signin" %>
+      <% end %> 
+    </div>    
+  </div>
+</header>
+
+<!-- Original Code
+<header>
+  <div class="content">
+    <div class="left">
+      <%= link_to "", root_path, class: "logo" %>
+    </div>
+    <div class="right">
+      <% if signed_in? %>
+        <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>
+        <%= link_to "Profile", current_user %>
+        <%= link_to "Invite", invite_users_path %>
+        <%= link_to "Search", users_path %>
+        <%= link_to "Manage Photos", "/manage_photos" %>    
+      <% else %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "buttonLink green" %>
+        <%= link_to "Sign in", new_user_session_path, class: "signin" %>
+      <% end %> 
     </div>
   </div>
 </header>
+-->
+
 
 <!-- Code prior to front end help -->
 <!-- <header class="navbar navbar-fixed-top navbar-inverse">
