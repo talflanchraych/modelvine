@@ -197,7 +197,7 @@ section.profile .userDetails p.name {
 }
 section.profile .userDetails p.city {
  padding-left: 15px;
- background: url('ico-location.png') no-repeat left center;
+ background: image-url('ico-location.png') no-repeat left center;
 }
 section.profile .clear {
  display: none;
@@ -377,19 +377,19 @@ aside .statistics li p.label {
  margin: 15px 0 1px 0;
 }
 aside .statistics .size .long {
- background: url('ico-scale.png') no-repeat left center;
+ background: image-url('ico-scale.png') no-repeat left center;
 }
 aside .statistics .height .long {
- background: url('ico-meter.png') no-repeat left center;
+ background: image-url('ico-meter.png') no-repeat left center;
 }
 aside .statistics .hair .long {
- background: url('ico-hair.png') no-repeat left center;
+ background: image-url('ico-hair.png') no-repeat left center;
 }
 aside .statistics .dress .long {
- background: url('ico-dress.png') no-repeat left center;
+ background: image-url('ico-dress.png') no-repeat left center;
 }
 aside .statistics .colors .long {
- background: url('ico-paint.png') no-repeat left center;
+ background: image-url('ico-paint.png') no-repeat left center;
 }
 aside .skills {
  margin: 0 15px 0 20px;
