@@ -18,77 +18,31 @@
       <%= f.select :gender, [['Male','Male'], ['Female', 'Female']] %>
 
       <%= f.label :height %>
-      <%= f.select :height,
-        [["4'0\"", 4.0], ["4'1\"", 4.08], ["4'2\"", 4.17], ["4'3\"", 4.25], ["4'4\"", 4.33], ["4'5\"", 4.42],["4'6\"", 4.5],["4'7\"", 4.58],["4'8\"", 4.67],["4'9\"", 4.75],["4'10\"", 4.83],["4'11\"", 4.92],["5'0\"", 5.0],["5'1\"", 5.08],["5'2\"", 5.17],["5'3\"", 5.25],["5'4\"", 5.33],
-        ["5'5\"", 5.42],
-        ["5'6\"", 5.5],
-        ["5'7\"", 5.58],
-        ["5'8\"", 5.67],
-        ["5'9\"", 5.75],
-        ["5'10\"", 5.83],
-        ["5'11\"", 5.92],
-        ["6'0\"", 6.0],
-        ["6'1\"", 6.08],
-        ["6'2\"", 6.17],
-        ["6'3\"", 6.25],
-        ["6'4\"", 6.33],
-        ["6'5\"", 6.42],
-        ["6'6\"", 6.50],
-        ["6'7\"", 6.58],
-        ["6'8\"", 6.67],
-        ["6'9\"", 6.75],
-        ["6'10\"", 6.83],
-        ["6'11\"", 6.92],
-        ["7'0\"", 7.0],
-        ["7'1\"", 7.08],
-        ["7'2\"", 7.17],
-        ["7'3\"", 7.25],
-        ["7'4\"", 7.33],
-        ["7'5\"", 7.42],
-        ["7'6\"", 7.50],] 
-      %>
+      <%= f.select :height, height_list %>
 
       <%= f.label :weight, 'Weight (Lbs)' %>
       <%= f.text_field :weight %>
 
-      <%= f.label :ethnicity %>
-      <%= f.select :ethnicity, 
-        [['Caucasian','Caucasain'],
-        ['African American/Black','African American/Black'],
-        ['Asian','Asian'], 
-        ['Middle Eastern','Middle Eastern'], 
-        ['Pacific Islander','Pacific Islander'],
-        ['Native American','Native American'],
-        ['Other','Other']] 
-      %>
+      <%= f.label :measurements %>
+      <%= f.text_field :measurements %>
 
-      <%= f.label :eye_color %>
-      <%= f.select :eye_color,
-        [['Black','Black'],
-        ['Blue','Blue'],
-        ['Brown','Brown'],
-        ['Gray','Gray'],
-        ['Green','Green'],
-        ['Hazel','Hazel'],
-        ['Maroon','Maroon'],
-        ['Multicolored','Multicolored'],
-        ['Other','Other']
-        ]
-      %>
+      <%= f.label :cup %>
+      <%= f.text_field :cup %>
 
       <%= f.label :hair_color %>
-      <%= f.select :hair_color,
-        [['Brown','Brown'],
-        ['Black','Black'],
-        ['Blond','Blond'],
-        ['White','White'],
-        ['Blue','Blue'],
-        ['Green','Green'],
-        ['Multicolored','Multicolored'],
-        ['Partly or Completely Bald', 'Bald'],
-        ['Other','Other']
-        ]
-      %>
+      <%= f.select :hair_color, hair_color_list %>
+
+      <%= f.label :dress_size %>
+      <%= f.text_field :dress_size %>
+
+      <%= f.label :shoe_size %>
+      <%= f.text_field :shoe_size %>
+
+      <%= f.label :ethnicity %>
+      <%= f.select :ethnicity, ethnicity_list %>
+
+      <%= f.label :eye_color %>
+      <%= f.select :eye_color, eye_color_list %>
 
       <%= f.label :model_mayhem, "URL of Your Model Mayhem Profile" %>
       <%= f.text_field :model_mayhem %>
