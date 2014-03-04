@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140222233923) do
+ActiveRecord::Schema.define(version: 20140303060344) do
 
   create_table "access_codes", force: true do |t|
-    t.string   "access_code"
-    t.boolean  "used",        default: false
+    t.string   "code"
+    t.boolean  "used",       default: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "used_by"
   end
 
   create_table "agencies", force: true do |t|

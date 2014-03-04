@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def invite
-    @access_codes = current_user.access_codes
+    @access_codes = AccessCodeDecorator.decorate_collection(current_user.access_codes)
   end
 
   def generate_invites

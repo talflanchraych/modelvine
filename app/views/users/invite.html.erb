@@ -4,11 +4,17 @@ Access Codes Available:
 		<tr>
 			<th> Access Code </th>
 			<th> Used </th>
+			<th> Used By </th>
 		</tr>
 		<% @access_codes.each do |ac| %>
 			<tr>
-				<th> <%= ac.access_code %> </th>
+				<th> <%= ac.code %> </th>
 				<th> <%= ac.used %> </th>
+				<th> 
+					<% if ac.used_by_user_name %>
+						<%= link_to ac.used_by_user_name, user_path(ac.used_by) %> 
+					<% end %>
+				</th>
 			</tr>
 		<% end %>
 	</tbody>

@@ -33,6 +33,8 @@ gem 'devise'
 gem 'paperclip', '~> 3.0'
 #Amazon store's all pictures
 gem 'aws-sdk'
+#Decorator
+gem 'draper'
 
 group :development do
   gem 'sqlite3'
@@ -40,6 +42,7 @@ group :development do
   gem 'annotate'
   gem 'pry-rails'
   gem 'pry'
+  gem 'binding_of_caller'
 end
 
 group :development, :test do
