@@ -53,7 +53,7 @@ body {
 }
 div.content,
 article.content {
- margin: 0 50px;
+ margin: 0 100px;
  height: inherit;
 }
 div.content .left,
@@ -117,6 +117,13 @@ a:hover {
  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#75983e', endColorstr='#698c32', GradientType=0);
  /* IE6-9 */
 }
+
+.buttonLink.green.large{
+   height: 51px;
+line-height: 51px;
+font-size:1.5em;
+margin-bottom:10px;
+}
 .buttonLink.green:hover {
  color: #fff;
 }
@@ -126,7 +133,6 @@ header {
  width: 100%;
  background: #ffffff;
  background-image: image-url('bg-header.png');
- border-bottom: 2px solid #463d41;
 }
 header .left {
  width: 200px;
@@ -134,10 +140,19 @@ header .left {
 header .left .logo {
  display: block;
  width: 194px;
- height: 23px;
+ height: 49px;
  background-image: image-url('modelvine-logo.png');
  background-repeat: no-repeat;
  margin-top: 28px;
+}
+
+@media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) { 
+
+   header .left .logo {
+ background-image: image-url('modelvine-logo2x.png');background-size: 124px 49px;
+}
 }
 
 header .right a {
@@ -668,6 +683,11 @@ ul.comments li .body .author span {
    clear: both;
    margin-top: 20px;
  }
+ div.content,
+article.content {
+ margin: 0 50px;
+ height: inherit;
+}
 }
 @media only screen and (max-width: 710px) {
  aside {
@@ -706,6 +726,11 @@ ul.comments li .body .author span {
  section.profile .userDetails p.name {
    margin-bottom: 5px;
  }
+ div.content,
+article.content {
+ margin: 0 50px;
+ height: inherit;
+}
 }
 @media only screen and (max-width: 515px) {
  section.profile {
@@ -726,6 +751,11 @@ ul.comments li .body .author span {
  section.profile .follow .btn {
    float: right;
  }
+ div.content,
+article.content {
+ margin: 0 30px;
+ height: inherit;
+}
 }
 @media only screen and (max-width: 460px) {
  .content {
