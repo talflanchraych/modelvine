@@ -62,7 +62,6 @@ module ModelsHelper
     ['Gray','Gray'],
     ['Green','Green'],
     ['Hazel','Hazel'],
-    ['Maroon','Maroon'],
     ['Multicolored','Multicolored'],
     ['Other','Other']]
   end
