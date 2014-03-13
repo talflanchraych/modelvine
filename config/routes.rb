@@ -2,6 +2,7 @@ FiscalFitness::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
   # resources gives :users all RESTful routes
   resources :users do
+    resources :models, :photographers, :agencies, :businesses, :makeup_artists
     member do
       post :set_default_photo
     end
