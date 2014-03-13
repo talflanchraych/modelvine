@@ -46,7 +46,7 @@ module ModelsHelper
   end 
 
   def ethnicity_list
-    [['Caucasian','Caucasain'],
+    [['Caucasian','Caucasian'],
     ['African American/Black','African American/Black'],
     ['Asian','Asian'], 
     ['Middle Eastern','Middle Eastern'], 
