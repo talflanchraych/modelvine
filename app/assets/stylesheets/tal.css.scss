@@ -139,7 +139,7 @@ header .left {
 }
 header .left .logo {
  display: block;
- width: 194px;
+ width: 203px;
  height: 49px;
  background-image: image-url('modelvine-logo.png');
  background-repeat: no-repeat;
@@ -151,7 +151,7 @@ header .left .logo {
 (min-resolution: 192dpi) { 
 
    header .left .logo {
- background-image: image-url('modelvine-logo2x.png');background-size: 124px 49px;
+ background-image: image-url('modelvine-logo2x.png');background-size: 203px 49px;
 }
 }
 
