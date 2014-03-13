@@ -16,6 +16,9 @@ ActiveRecord::Schema.define(version: 20140312235407) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "access_codes", force: true do |t|
     t.string   "code"
     t.boolean  "used",       default: false
@@ -33,7 +36,6 @@ ActiveRecord::Schema.define(version: 20140312235407) do
   create_table "businesses", force: true do |t|
     t.text   "bio"
     t.string "website"
-    t.string "type"
   end
 
   create_table "makeup_artists", force: true do |t|
