@@ -12,10 +12,10 @@
       <%= render 'shared/error_messages', object: @model %>
 
       <%= f.label :birth_date %>
-      <%= date_select :model, :birth_date, start_year: 1900 %>
+      <%= f.date_field :birth_date, start_year: 1900 %>
 
       <%= f.label :gender %>
-      <%= f.select :gender, [['Male','Male'], ['Female', 'Female']] %>
+      <%= f.select :gender, ['Male', 'Female'] %>
 
       <%= f.label :height %>
       <%= f.select :height, height_list %>
@@ -23,11 +23,17 @@
       <%= f.label :weight, 'Weight (Lbs)' %>
       <%= f.text_field :weight %>
 
-      <%= f.label :measurements %>
-      <%= f.text_field :measurements %>
+      <%= f.label :bust %>
+      <%= f.text_field :bust %>
 
+      <%= f.label :waist %>
+      <%= f.text_field :waist %>
+ 
+      <%= f.label :hips %>
+      <%= f.text_field :hips %>
+ 
       <%= f.label :cup %>
-      <%= f.text_field :cup %>
+      <%= f.select :cup, cup_list %>
 
       <%= f.label :hair_color %>
       <%= f.select :hair_color, hair_color_list %>
@@ -36,7 +42,7 @@
       <%= f.text_field :dress_size %>
 
       <%= f.label :shoe_size %>
-      <%= f.text_field :shoe_size %>
+      <%= f.select :shoe_size, shoe_size_list %>
 
       <%= f.label :ethnicity %>
       <%= f.select :ethnicity, ethnicity_list %>
