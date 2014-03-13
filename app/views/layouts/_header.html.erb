@@ -6,7 +6,9 @@
     <div class="right">
       <% if signed_in? %>
         <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>
-        <%= link_to "Profile", current_user %>
+        <% if current_user.user_type != nil %>
+          <%= link_to "Profile", current_user %>
+        <% end %>
         <%= link_to "Invite", invite_users_path %>
         <%= link_to "Search", users_path %>
         <% if current_user.user_type != nil %>
