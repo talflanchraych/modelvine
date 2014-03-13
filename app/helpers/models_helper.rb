@@ -56,9 +56,9 @@ module ModelsHelper
   end
 
   def eye_color_list
-    [['Black','Black'],
-    ['Blue','Blue'],
-    ['Brown','Brown'],
+    [['Blue','Blue'],
+    ['Dark Brown','Dark Brown'],
+    ['Light Brown','Light Brown'],
     ['Gray','Gray'],
     ['Green','Green'],
     ['Hazel','Hazel'],
@@ -67,12 +67,14 @@ module ModelsHelper
   end
 
   def hair_color_list
-    [['Brown','Brown'],
+    [['Light Brown','Light Brown'],
+    ['Dark Brown','Dark Brown'],
     ['Black','Black'],
     ['Blond','Blond'],
     ['White','White'],
     ['Blue','Blue'],
     ['Green','Green'],
+    ['Red','Red'],
     ['Multicolored','Multicolored'],
     ['Partly or Completely Bald', 'Bald'],
     ['Other','Other']]
