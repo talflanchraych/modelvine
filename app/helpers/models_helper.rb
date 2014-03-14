@@ -81,7 +81,7 @@ module ModelsHelper
   end
 
   def cup_list
-    ['A', 'B','C','D','DD','DDD','E','EE','EEE','F','FF','FFF','G','GG','GGG']
+    ['N/A', 'A', 'B','C','D','DD','DDD','E','EE','EEE','F','FF','FFF','G','GG','GGG']
   end
 
   def shoe_size_list
