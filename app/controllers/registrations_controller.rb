@@ -24,11 +24,11 @@ class RegistrationsController < Devise::RegistrationsController
 		      respond_with resource
 		    end
 		  else
-		  	flash[:alert] = "Access code already used."
+		  	flash[:alert] = "Invite code already used."
 				redirect_to :back
 		  end
 		else
-			flash[:alert] = "Access code does not exist."
+			flash[:alert] = "Invite code does not exist."
 			redirect_to :back
 		end
   end
