@@ -12,6 +12,19 @@
  *= require_tree
  */
 
+// Site Wide CSS
 @import "bootstrap";
 @import "custom.css.scss";
 @import "tal.css.scss";
+@import "fonts.css.scss";
+@import "normalize.css";
+
+
+//Controller Specific CSS
+@import "sessions.css.scss";
+@import "static_pages.css.scss";
+@import "user_photo.css.scss";
+@import "users.css.scss";
+
+
+
