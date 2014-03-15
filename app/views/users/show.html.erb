@@ -1,6 +1,8 @@
 <% provide(:title, @user.name) %>
 <section class="profile">
-	<div class="avatar" style=<%="background-image:url('#{@user.get_default_photo.photo.url}');"%>></div>
+	<% if @user_photos.any? %>
+		<div class="avatar" style=<%="background-image:url('#{@user.get_default_photo.photo.url}');"%>></div>
+	<% end %>
 	<div class="userDetails">
 		<p class="name"><%= @user.name %></p>
 		<p class="city"><%= @user.zip_code %></p>
@@ -96,9 +98,11 @@
 		<!-- <h2>Invited by Jane Doe</h2> -->
 	</aside>
 
-	<section class="body">
-		<div class="grid">
-			<%= render @user_photos %> 
+	<section class="photo-wall">
+		<div class="photo-grid" style="width: 100%">
+			<% if @user_photos.any? %>
+				<%= render @user_photos %>
+			<% end %>
 		</div>
 	</section>
 </article>
