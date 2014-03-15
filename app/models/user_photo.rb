@@ -19,6 +19,8 @@ class UserPhoto < ActiveRecord::Base
 	#Ensure Photo can't save unless it belongs to a user
 	validates :user_id, presence: true
 	validates :caption, length: { maximum: 140 }
+	validates :photo_width, presence: true
+	validates :photo_height, presence: true
 
 	# Validations for Photo's
 	validates :photo, presence: true
@@ -32,5 +34,13 @@ class UserPhoto < ActiveRecord::Base
 
 	#default_scope -> { where(default_photo: true)}
 	scope :default_photo, -> { where(default_photo: true )}
+
+	after_post_process :save_image_dimensions
+
+	def save_image_dimensions
+		geo = Paperclip::Geometry.from_file(photo.queued_for_write[:original])
+	    self.photo_width = geo.width.to_i
+	    self.photo_height = geo.height.to_i
+	end
 	
 end

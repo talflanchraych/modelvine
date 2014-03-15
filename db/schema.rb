@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140315194153) do
   create_table "businesses", force: true do |t|
     t.text   "bio"
     t.string "website"
+    t.string "type"
   end
 
   create_table "makeup_artists", force: true do |t|
@@ -81,9 +82,11 @@ ActiveRecord::Schema.define(version: 20140315194153) do
     t.datetime "photo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "photo_width",        default: 300, null: false
+    t.integer  "photo_height",       default: 300, null: false
   end
 
-  add_index "user_photos", ["user_id", "created_at"], name: "index_user_photos_on_user_id_and_created_at", using: :btree
+  add_index "user_photos", ["user_id", "created_at"], name: "index_user_photos_on_user_id_and_created_at"
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -109,7 +112,7 @@ ActiveRecord::Schema.define(version: 20140315194153) do
     t.integer  "default_photo_id"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
