@@ -1,13 +1,12 @@
 <% provide(:title, "Edit model profile") %>
 <h1>Model Specific Information</h1>
 
-<div class="row">
-  <div class="span6"> 
+  <div class="row span5"> 
     <%= render 'shared/user_photo_form' %>
     <%= render 'shared/user_photo_feed' %>
   </div>
 
-  <div class="span6">
+  <div class="row span5">
     <%= form_for(@model) do |f| %>
       <%= render 'shared/error_messages', object: @model %>
 
@@ -24,13 +23,13 @@
       <%= f.text_field :weight %>
 
       <%= f.label :bust %>
-      <%= f.text_field :bust %>
+      <%= f.select :bust, measurement_list %>
 
       <%= f.label :waist %>
-      <%= f.text_field :waist %>
+      <%= f.select :waist, measurement_list %>
  
       <%= f.label :hips %>
-      <%= f.text_field :hips %>
+      <%= f.select :hips, measurement_list %>
  
       <%= f.label :cup %>
       <%= f.select :cup, cup_list %>
@@ -39,7 +38,7 @@
       <%= f.select :hair_color, hair_color_list %>
 
       <%= f.label :dress_size %>
-      <%= f.text_field :dress_size %>
+      <%= f.select :dress_size, dress_size_list %>
 
       <%= f.label :shoe_size %>
       <%= f.select :shoe_size, shoe_size_list %>
@@ -61,5 +60,4 @@
 
   </div>
 
-</div>
 
