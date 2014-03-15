@@ -14,7 +14,6 @@ class BaseUserTypeController < ApplicationController
   def update
     # Create a new variable for the base user = find the current user as in Model.find or Business.find
     ## Notice that Model and Business are capitalized
-
     @base_user_type = current_user.user_type
     instance_variable_set("@#{params[:controller].singularize}".to_sym, @base_user_type)
     # instance_variable_set(:@)

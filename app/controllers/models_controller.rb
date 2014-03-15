@@ -36,7 +36,7 @@ class ModelsController < BaseUserTypeController
 	def user_type_params
       params.require(:model).permit(:birth_date, :gender, :height, :bio,
                                    :weight, :ethnicity, :eye_color, :hair_color, :cup, :bust, :waist, :hips, 
-                                   :cup, :dress_size, :shoe_size)
+                                   :cup, :dress_size, :shoe_size, :website)
   end
 
 end

@@ -16,13 +16,13 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     @user_photos = @user.user_photos
     @user_type_attributes = @user.user_type.attributes.reject {|x| x.include?("_at") || x.include?("id") }
+    @model = ModelDecorator.decorate(@user.user_type)
   end
 
   def edit
     @user = User.find(params[:id])
   end
 
-  #Update a user
   def update
     @user = current_user
     if @user.update_without_password(user_params)
@@ -104,7 +104,8 @@ class UsersController < ApplicationController
     #Rails 4.0 Strong Paramaters
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation, :zip_code, :type_of_user, :user_website)
+                                   :password_confirmation, :zip_code, 
+                                   :type_of_user, :user_website)
     end
 
     # Before filters

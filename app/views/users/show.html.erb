@@ -5,10 +5,10 @@
 		<p class="name"><%= @user.name %></p>
 		<p class="city"><%= @user.zip_code %></p>
 		<p><%= @user.age %> years old</p>
-		<p><%= link_to @user.user_website %></p>
+		<p><%= @user.user_type.website %></p>
 	</div>
 	<div class="clear"></div>
-	<div class="follow">
+<!-- 	<div class="follow">
 		<div class="following">
 			<p>7,304 <small>following</small></p>
 		</div>
@@ -16,25 +16,26 @@
 			<p>184 <small>followers</small></p>
 		</div>
 		<a href="" class="btn"><div class="ico"></div>Follow</a>
-	</div>
+	</div> -->
 </section>
 <article class="content gridView">
 	<aside>
 		<h2>Bio</h2>
-		<p><%= @user.user_type.bio %>...</p>
-		<p class="more"><a href="">Read More</a></p>
+		<p><%= @user.user_type.bio %></p>
+		<!-- <p class="more"><a href="">Read More</a></p> -->
 
-		<h2>General statistics</h2>
+		<h2>General Information</h2>
 		<ul class="statistics">
 			<li class="size">
 				<div class="long">
 					<div class="short">
 						<p class="label">Height</p>
-						<p> <%= @user.user_type.height %> </p>
+						<!-- Use model_decorator here to adjust the height -->
+						<p> <%= @model.inches_to_height %></p>
 					</div>
 					<div class="short">
 						<p class="label">Weight</p>
-						<p> <%= @user.user_type.weight %> </p>
+						<p> <%= @user.user_type.weight %> lbs</p>
 					</div>
 				</div>
 			</li>
@@ -42,7 +43,7 @@
 				<div class="long">
 					<div class="short">
 						<p class="label">Size</p>
-						<p> <%= "#{@user.user_type.bust} | #{@user.user_type.waist} | #{@user.user_type.hips}" %> </p>
+						<p> <%= "#{@user.user_type.bust} / #{@user.user_type.waist} / #{@user.user_type.hips}" %> </p>
 					</div>
 					<div class="short">
 						<p class="label">Cup</p>
@@ -81,7 +82,7 @@
 				</div>
 			</li>
 		</ul>
-		<h2>Skills</h2>
+<!-- 		<h2>Skills</h2>
 		<ul class="skills">
 			<li><a href="">Fashion / Editorial</a></li>
 			<li><a href="">Runway</a></li>
@@ -90,9 +91,9 @@
 			<li><a href="">Swimwear</a></li>
 			<li class="more"><a href="">...and 8 more</a></li>
 			<li class="clear"></li>
-		</ul>
+		</ul> -->
 
-		<h2>Invited by Jane Doe</h2>
+		<!-- <h2>Invited by Jane Doe</h2> -->
 	</aside>
 
 	<section class="body">
