@@ -12,7 +12,7 @@
       <%= f.label :zip_code, "Location" %>
       <%= f.text_field :zip_code, placeholder: "Zip Code" %>
 
-      <%= f.label :user_type_type, "What type of user are you?" %>
+      <%= f.label :user_type_type, "What are you?" %>
       <% if @user.user_type %>
         <%= f.text_field :user_type_type, placeholder: @user.user_type_type, readonly: true %>
       <% else %>
@@ -21,7 +21,7 @@
                                    ['Photographer', 'Photographer'],
                                    ['Business', 'Business'], 
                                    ['Make Up Artist', 'MakeupArtist'],
-                                   ['Agency', 'Agency']], placeholder: "What Type of user are you?" %>
+                                   ['Agency', 'Agency']], placeholder: "What are you?" %>
       <% end %>
 
       <%= f.submit "Next", class: "btn btn-large btn-primary" %>

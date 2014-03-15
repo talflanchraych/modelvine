@@ -139,11 +139,11 @@ header .left {
 }
 header .left .logo {
  display: block;
- width: 203px;
- height: 49px;
+ width: 150px;
+ height: 36px;
  background-image: image-url('modelvine-logo.png');
  background-repeat: no-repeat;
- margin-top: 28px;
+ margin-top: 15px;
 }
 
 @media 
@@ -151,13 +151,13 @@ header .left .logo {
 (min-resolution: 192dpi) { 
 
    header .left .logo {
- background-image: image-url('modelvine-logo2x.png');background-size: 203px 49px;
+ background-image: image-url('modelvine-logo2x.png');background-size: 150px 36px;
 }
 }
 
 header .right a {
  margin: 24px 0 0 29px;
- color: #654654;
+ color: #cccccc;
  line-height: 32px;
  float: right;
  transition: all 0.7s;
@@ -321,8 +321,7 @@ section.profile .follow .followers .avatars div .opacity {
  top: -1px;
 }
 /* aside */
-aside h2,
-aside p {
+aside h2{
  text-shadow: 0 1px 1px #222222;
 }
 aside h2 {
@@ -331,7 +330,7 @@ aside h2 {
  font-size: 15px;
  text-transform: uppercase;
  font-family: 'Proxima Nova', 'proximanova500', proximanova500, Arial, Tahoma, sans-serif;
- font-weight: 500;
+ font-weight: 600;
 }
 aside p {
  color: #fff;
@@ -339,7 +338,7 @@ aside p {
  font-size: 14px;
  line-height: 18px;
  font-family: 'Proxima Nova', 'proximanova400', proximanova400, Arial, Tahoma, sans-serif;
- font-weight: 400;
+ font-weight: 200;
 }
 aside p a {
  color: #9f9197;
