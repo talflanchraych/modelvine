@@ -22,7 +22,7 @@ class Model < ActiveRecord::Base
   validates :birth_date, :gender, :height, :ethnicity,
     :eye_color, :hair_color, :bio, presence: true,
     on: :update
-  #validates :bio, length: { minimum: 25 },
-  #  on: :update
+  validates :bio, length: { minimum: 100 },
+   on: :update
 
 end
