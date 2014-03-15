@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20140315194153) do
   create_table "businesses", force: true do |t|
     t.text   "bio"
     t.string "website"
-    t.string "type"
   end
 
   create_table "makeup_artists", force: true do |t|
