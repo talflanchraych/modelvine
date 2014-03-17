@@ -1,0 +1,23 @@
+<header class="landingpage">
+  <div class="content">
+    <div class="left">
+      <%= link_to "", root_path, class: "logo" %>
+    </div>
+    <div class="right headerlinks">
+      <% if signed_in? %>
+        <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>
+        <% if current_user.user_type != nil %>
+          <%= link_to "Profile", current_user %>
+          <%= link_to "Invite", invite_users_path %>
+        <% end %>
+        <%= link_to "Search", users_path %>
+        <% if current_user.user_type != nil %>
+          <%= link_to "Manage Profile", "/users/#{current_user.id}/models/#{current_user.user_type.id}/edit" %>
+        <% end %>    
+      <% else %>
+        <%= link_to "Redeem Invite", new_user_registration_path, class: "buttonLink green" %>
+        <%= link_to "Sign in", new_user_session_path, class: "signin" %>
+      <% end %> 
+    </div>    
+  </div>
+</header>
