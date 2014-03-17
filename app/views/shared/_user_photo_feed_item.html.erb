@@ -3,20 +3,20 @@
   <div>
       <%= image_tag user_photo_feed_item.photo.url(:thumb) %>
   </div>
-  <span class="user">
+<!--   <span class="user">
     <%= link_to user_photo_feed_item.user.name, user_photo_feed_item.user %>
-  </span>
-  <span class="caption"><%= user_photo_feed_item.caption %> | </span>
-  <span class="timestamp">
+  </span> -->
+  <span class="caption"><%= user_photo_feed_item.caption %> </span>
+<!--   <span class="timestamp">
     Posted <%= time_ago_in_words(user_photo_feed_item.created_at) %> ago.
-  </span>
+  </span> -->
 
   <label class="radio">
     <%= radio_button_tag 'receive_updates', 'no', is_default_photo?(user_photo_feed_item.id) ? true : false, class: "set_default_photo" %>
-    <%= label_tag "Set As Profile Picture" %>
+    <%= label_tag "Set As profile picture" %>
   </label>
 
-  <div>Profile Picture? <%= is_default_photo?(user_photo_feed_item.id) ? "Yes": "No" %></div>
+  <!-- <div style="margin-bottom:20px">Profile Picture? <%= is_default_photo?(user_photo_feed_item.id) ? "Yes": "No" %></div> -->
   
   <% if current_user?(user_photo_feed_item.user) %>
     <%= link_to "delete", user_photo_feed_item, method: :delete,
