@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require_tree ../../../vendor/assets/javascripts/fancybox
 //= require ../../../vendor/assets/javascripts/masonry.pkgd
+//= require ../../../vendor/assets/javascripts/imagesloaded.pkgd
 //= require jquery.ui.all
 //= require bootstrap
 //= require turbolinks
