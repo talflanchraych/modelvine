@@ -29,8 +29,12 @@ FiscalFitness::Application.routes.draw do
   # match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
+  match '/jobs',   to: 'static_pages#jobs',   via: 'get'
   match '/developer',to: 'static_pages#developer', via: 'get'
   match '/waitlist', to: 'static_pages#waitlist', via: 'get'
+  match '/terms', to: 'static_pages#terms', via: 'get'
+  match '/privacy', to: 'static_pages#privacy', via: 'get'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

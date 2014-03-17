@@ -135,15 +135,17 @@ header {
 
 header .left {
  width: 200px;
+ margin-left:3%;
+
 }
 header .left .logo {
- margin-left: 19%;
- display: block;
- width: 150px;
- height: 36px;
+ margin-left: 0%;
+display: block;
+ width: 100px;
+ height: 25px;
  background-image: image-url('modelvine-logo.png');
  background-repeat: no-repeat;
- margin-top: 22px;
+ margin-top: 17px;
 }
 
 @media 
@@ -151,12 +153,12 @@ header .left .logo {
 (min-resolution: 192dpi) { 
 
    header .left .logo {
- background-image: image-url('modelvine-logo2x.png');background-size: 150px 36px;
+ background-image: image-url('modelvine-logo2x.png');background-size: 100px 25px;
 }
 }
 
 header .right a {
- margin: 24px 0 0 29px;
+ margin: 16px 0 0 29px;
  color: #cccccc;
  line-height: 32px;
  float: right;
@@ -783,3 +785,5 @@ article.content {
 }
 
 .headerlinks{margin-top:0px;}
+
+header {height:65px;}
