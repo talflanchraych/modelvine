@@ -7,12 +7,14 @@
       <% if signed_in? %>
         <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>
         <% if current_user.user_type != nil %>
-          <%= link_to "Profile", current_user %>
-          <%= link_to "Invite", invite_users_path %>
+          <%= link_to "Invite Models", invite_users_path %>
+
         <% end %>
-        <%= link_to "Search", users_path %>
-        <% if current_user.user_type != nil %>
-          <%= link_to "Manage Profile", "/users/#{current_user.id}/models/#{current_user.user_type.id}/edit" %>
+<!--         <%= link_to "Search", users_path %>
+        <% if current_user.user_type != nil %> -->
+          <%= link_to "Edit Profile", "/users/#{current_user.id}/models/#{current_user.user_type.id}/edit" %>
+          <%= link_to "View Profile", current_user %>
+
         <% end %>    
       <% else %>
         <%= link_to "Redeem Invite", new_user_registration_path, class: "buttonLink green" %>

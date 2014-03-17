@@ -1,14 +1,14 @@
-Generated Invite Codes:
+Here are your invite codes to give out to models who would benefit from Shotbox! Member invites are currently the only way to join because we want to keep the community high-quality and exclusive.
 <table>
 	<tbody>
 		<tr>
 			<th> Invite </th>
-			<th> Used </th>
+			<th class="inviteused"> Used </th>
 		</tr>
 		<% @access_codes.each do |ac| %>
 			<tr>
 				<th> <%= ac.code %> </th>
-				<th> <%= ac.used %> </th>
+				<th class="inviteused"> <%= ac.used %> </th>
 			</tr>
 		<% end %>
 	</tbody>
