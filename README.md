@@ -1,5 +1,7 @@
-== Current Progress
-* Start of Chapter 9, Ruby on Rails Tutorial
+== Branch 
+* add-tests
+
+* I disabled Access Codes in Order to initially test the user sign up Process
 
 
 

@@ -17,5 +17,4 @@
 //= require ../../../vendor/assets/javascripts/imagesloaded.pkgd
 //= require jquery.ui.all
 //= require bootstrap
-//= require turbolinks
 //= require_tree .

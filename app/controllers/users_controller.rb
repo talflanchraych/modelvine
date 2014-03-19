@@ -1,12 +1,9 @@
 class UsersController < ApplicationController
-  #Limit before filteres here
-  before_filter :authenticate_user!, only: [:edit, :update, :invite]
+  before_filter :authenticate_user!, only: [:edit, :update]#, :invite]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
   
   def index
-    #Paginiate all the user with the default per page
-    #@users= User.all.paginate(page: params[:page])
     @users = User.approved.paginate(page: params[:page])
   end
 
@@ -37,17 +34,26 @@ class UsersController < ApplicationController
     end
   end
 
-  def invite
-    @access_codes = AccessCodeDecorator.decorate_collection(current_user.access_codes)
+  #Admin users are the only one's who can do this
+  #Create admin users through heroku console
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted."
+    redirect_to users_url
   end
 
-  def generate_invites
-    number_of_invites = params[:number_of_invites][:number_of_invites].to_i
-    @access_codes = []
-    number_of_invites.times do
-      @access_codes.unshift current_user.access_codes.create
-    end
-  end
+
+  # def invite
+  #   @access_codes = AccessCodeDecorator.decorate_collection(current_user.access_codes)
+  # end
+
+  # def generate_invites
+  #   number_of_invites = params[:number_of_invites][:number_of_invites].to_i
+  #   @access_codes = []
+  #   number_of_invites.times do
+  #     @access_codes.unshift current_user.access_codes.create
+  #   end
+  # end
 
   def search
     # this will give us a string of user type, "Model"
@@ -77,14 +83,6 @@ class UsersController < ApplicationController
       @user_photo = current_user.user_photos.build
       @user_photo_feed_items = current_user.user_photo_feed.paginate(page: params[:page])
     end
-  end
-
-  #Admin users are the only one's who can do this
-  #Create admin users through heroku console
-  def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User deleted."
-    redirect_to users_url
   end
 
   def set_default_photo

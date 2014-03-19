@@ -1,28 +1,30 @@
 require 'spec_helper'
 
-describe "Static pages" do
 
-  subject { page }
+## Hartl Tutorial Code
+# describe "Static pages" do
 
-  describe "Home page" do
-    before { visit root_path }
+#   subject { page }
 
-    it { should have_content('Model Vine') }
-    it { should have_title('') }
-    it { should_not have_title('| Home') }
-  end
+#   describe "Home page" do
+#     before { visit root_path }
 
-  describe "Help page" do
-    before { visit help_path }
+#     it { should have_content('Model Vine') }
+#     it { should have_title('') }
+#     it { should_not have_title('| Home') }
+#   end
 
-    it { should have_content('Help') }
-    it { should have_title(full_title('Help')) }
-  end
+#   describe "Help page" do
+#     before { visit help_path }
 
-  describe "Help page" do
-    before { visit help_path }
+#     it { should have_content('Help') }
+#     it { should have_title(full_title('Help')) }
+#   end
 
-    it { should have_content('Help') }
-    it { should have_title(full_title('Help')) }
-  end
-end
+#   describe "Help page" do
+#     before { visit help_path }
+
+#     it { should have_content('Help') }
+#     it { should have_title(full_title('Help')) }
+#   end
+# end
