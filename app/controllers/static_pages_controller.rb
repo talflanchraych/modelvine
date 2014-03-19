@@ -1,6 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-    #@users = User.recently_updated.approved.paginate(page: params[:page])
   end
 
   def help
