@@ -13,7 +13,7 @@ FiscalFitness::Application.routes.draw do
     end
   end
 
-  resources :models, :photographers, :agencies, :businesses, :makeup_artists
+  #resources :models, :photographers, :agencies, :businesses, :makeup_artists
   
   match '/manage_photos', to: 'users#manage_photos', via: 'get'
 

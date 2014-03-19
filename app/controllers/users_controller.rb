@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
     @user_photos = @user.user_photos
+    #What is the following line of code doing? Please leave a note.
     @user_type_attributes = @user.user_type.attributes.reject {|x| x.include?("_at") || x.include?("id") }
     @model = ModelDecorator.decorate(@user.user_type)
   end

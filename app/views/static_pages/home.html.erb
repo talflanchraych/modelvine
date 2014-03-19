@@ -7,10 +7,11 @@
   ">
   Professional models use Shotbox to stand out from the rest. Free, easy to use, and currently invite only.</h2>
 
-<div class="redeem">
-  <a class="buttonLink green large redeem-inner text-center" style="display:block" href="/users/sign_up">Redeem Invite</a>
-<a class="signin text-center" style="display:block" href="https://modelvine.wufoo.com/forms/z1b7axkc1o40xbr/">Request an invite</a>
-</div>
+  <div class="redeem">
+    <!-- <a class="buttonLink green large redeem-inner text-center" style="display:block" href="/users/sign_up">Redeem Invite</a> -->
+    <%= link_to "Redeem Invite", new_user_registration_path, {:class => "buttonLink green large redeem-inner text-center"} %>
+    <a class="signin text-center" style="display:block" href="https://modelvine.wufoo.com/forms/z1b7axkc1o40xbr/">Request an invite</a>
+  </div>
 </div>
 
 <img src="/assets/katemarisol2.png" class="text-center katemarisol">
