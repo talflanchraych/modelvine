@@ -1,6 +1,6 @@
 class UserPhoto < ActiveRecord::Base
 	belongs_to :user
-	has_attached_file :photo, :styles => { :medium => "300x300", :thumb => "100x100" }, :default_url => "assets/images/:style/missing.png"
+	has_attached_file :photo, :styles => { :medium => "300x300", :thumb => "100x100#" }, :default_url => "assets/images/:style/missing.png"
 	#Ensure Photo can't save unless it belongs to a user
 	validates :user_id, presence: true
 	validates :caption, length: { maximum: 140 }
