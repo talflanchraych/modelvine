@@ -771,6 +771,7 @@ article.content {
    // width: 80%;
    .photo-grid {
       min-height: 700px;
+      min-width: 905px;
       .photo-brick {
          width: 300px;
          height: 300px;
@@ -779,6 +780,7 @@ article.content {
           height: auto;
           margin-top: -3px;
           margin-bottom: 40px;
+          border: 1px solid white;
          }
       }
    }

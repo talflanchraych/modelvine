@@ -38,6 +38,7 @@ gem 'aws-sdk'
 gem 'draper'
 
 group :development do
+  # gem 'sqlite3'
   gem 'pry-rails'
   gem 'pry'
   gem 'binding_of_caller'
