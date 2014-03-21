@@ -1,7 +1,7 @@
 <% provide(:title, @user.name) %>
 <section class="profile">
 	<% if @user_photos.any? %>
-		<div class="avatar" style=<%="background-image:url('#{@user.get_default_photo.photo.url}');"%>></div>
+		<div class="avatar" style=<%="background-image:url('#{@user.get_default_photo.photo.url (:thumb)}');"%>></div>
 	<% end %>
 	<div class="userDetails">
 		<p class="name"><%= @user.name %></p>
