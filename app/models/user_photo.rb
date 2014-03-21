@@ -1,18 +1,3 @@
-# == Schema Information
-#
-# Table name: user_photos
-#
-#  id                 :integer          not null, primary key
-#  caption            :string(255)
-#  user_id            :integer
-#  created_at         :datetime
-#  updated_at         :datetime
-#  photo_file_name    :string(255)
-#  photo_content_type :string(255)
-#  photo_file_size    :integer
-#  photo_updated_at   :datetime
-#
-
 class UserPhoto < ActiveRecord::Base
 	belongs_to :user
 	has_attached_file :photo, :styles => { :medium => "300x300", :thumb => "100x100" }, :default_url => "assets/images/:style/missing.png"
@@ -32,8 +17,10 @@ class UserPhoto < ActiveRecord::Base
  	# The default way the phot's will be listed
 	default_scope -> { order('created_at DESC') }
 
-	#default_scope -> { where(default_photo: true)}
 	scope :default_photo, -> { where(default_photo: true )}
+	
+
+	#http://www.andhapp.com/blog/2010/07/07/extend-paperclip-to-retrieve-images-dimensions/
 
 	after_post_process :save_image_dimensions
 

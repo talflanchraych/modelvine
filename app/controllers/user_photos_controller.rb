@@ -6,7 +6,7 @@ class UserPhotosController < ApplicationController
 
 	# GET /user_photos
 	def index
-		@user_photo = UserPhoto.all
+		@user_photos = UserPhoto.all
 	end
 
 	def show
@@ -21,11 +21,10 @@ class UserPhotosController < ApplicationController
 
 	# POST /user_photos
 	def create
-		# Create a instance of photos, fidn the current user and build a new photo
-		# build the user_photo with params without default_photo value
 		@user_photo = current_user.user_photos.build(user_photo_params)
 		
 		if @user_photo.save
+			#Write the name of the file to the screen
 			current_user.touch
 			# if the photo was saved successfully and user does want to set it as default
 			if params[:default_photo] == "1" || current_user.user_photos.size == 1
@@ -52,10 +51,8 @@ class UserPhotosController < ApplicationController
 
 	private
 
-		# STRONG PARAMATERS, Rails 4; This allows the database colum caption to be uploaded through the web
-		# This is the replacement for attribute assesible in Rails 3.2 
 		def user_photo_params
-			params.require(:user_photo).permit(:caption, :photo)
+			params.require(:user_photo).permit(:caption, :photo, :photo_width, :photo_height)
 		end
 
 		# Relates to the destroy action 

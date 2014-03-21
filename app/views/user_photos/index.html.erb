@@ -1,6 +1,6 @@
 <h1>Listing ALL User Photo's Uploaded to the Site</h1>
 
-<% @user_photo.each do |user_photo| %>
+<% @user_photos.each do |user_photo| %>
 
   <div><%= image_tag user_photo.photo.url %></div>
   <div>Caption: <%= user_photo.caption %></div>
