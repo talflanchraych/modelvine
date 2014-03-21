@@ -1,10 +1,12 @@
 class UserPhoto < ActiveRecord::Base
 	belongs_to :user
+
 	has_attached_file :photo, :styles => { :medium => "300x300", :thumb => "200x200#" }, :default_url => "assets/images/:style/missing.png"
+
 	validates :user_id, presence: true
 	validates :caption, length: { maximum: 140 }
 	validates :photo_width, presence: true
-	validates :photo_height, presence: true
+	validates :photo_height, presence: truex
 
 	# Validations for Photo's
 	validates :photo, presence: true
