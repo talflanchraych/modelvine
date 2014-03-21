@@ -43,18 +43,17 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def invite
+    @access_codes = AccessCodeDecorator.decorate_collection(current_user.access_codes)
+  end
 
-  # def invite
-  #   @access_codes = AccessCodeDecorator.decorate_collection(current_user.access_codes)
-  # end
-
-  # def generate_invites
-  #   number_of_invites = params[:number_of_invites][:number_of_invites].to_i
-  #   @access_codes = []
-  #   number_of_invites.times do
-  #     @access_codes.unshift current_user.access_codes.create
-  #   end
-  # end
+  def generate_invites
+    number_of_invites = params[:number_of_invites][:number_of_invites].to_i
+    @access_codes = []
+    number_of_invites.times do
+      @access_codes.unshift current_user.access_codes.create
+    end
+  end
 
   def search
     # this will give us a string of user type, "Model"
