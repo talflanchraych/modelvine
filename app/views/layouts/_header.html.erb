@@ -11,9 +11,6 @@
           <%= link_to "Manage Profile", "/users/#{current_user.id}/models/#{current_user.user_type.id}/edit" %>
           <%= link_to "View Profile", current_user %>
         <% end %>  
-        <% if current_user.user_type != nil %>
-          <%= link_to "Manage Profile", "/users/#{current_user.id}/models/#{current_user.user_type.id}/edit" %>
-        <% end %>    
       <% else %>
         <%= link_to "Redeem Invite", new_user_registration_path, class: "buttonLink green" %>
         <%= link_to "Sign in", new_user_session_path, class: "signin" %>
