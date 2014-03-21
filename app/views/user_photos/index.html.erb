@@ -2,7 +2,7 @@
 
 <% @user_photos.each do |user_photo| %>
 
-  <div><%= image_tag user_photo.photo.url %></div>
+  <div><%= image_tag user_photo.photo.url (:thumb) %></div>
   <div>Caption: <%= user_photo.caption %></div>
   <div>User: <%= user_photo.user.name %></div>
 

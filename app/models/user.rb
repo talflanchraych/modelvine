@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
   ################
 
   # Sign in user
+  # Probably overwirtten with Devise
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end
@@ -50,6 +51,8 @@ class User < ActiveRecord::Base
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
   end
+
+  #Methods to keep
 
   def user_photo_feed
     UserPhoto.where("user_id = ?", id)

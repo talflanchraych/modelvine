@@ -1,7 +1,6 @@
 class UserPhoto < ActiveRecord::Base
 	belongs_to :user
-	has_attached_file :photo, :styles => { :medium => "300x300", :thumb => "100x100#" }, :default_url => "assets/images/:style/missing.png"
-	#Ensure Photo can't save unless it belongs to a user
+	has_attached_file :photo, :styles => { :medium => "300x300", :thumb => "200x200#" }, :default_url => "assets/images/:style/missing.png"
 	validates :user_id, presence: true
 	validates :caption, length: { maximum: 140 }
 	validates :photo_width, presence: true
@@ -19,8 +18,6 @@ class UserPhoto < ActiveRecord::Base
 
 	scope :default_photo, -> { where(default_photo: true )}
 	
-
-	#http://www.andhapp.com/blog/2010/07/07/extend-paperclip-to-retrieve-images-dimensions/
 
 	after_post_process :save_image_dimensions
 
