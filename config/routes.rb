@@ -28,6 +28,10 @@ FiscalFitness::Application.routes.draw do
   resources :user_photos
 
   resources :sessions, only: [:new, :create, :destroy] 
-  
+
+  devise_scope :user do 
+    match '/sessions/user', to: 'devise/sessions#create', via: :post
+  end
+
 
 end

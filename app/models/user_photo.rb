@@ -6,7 +6,7 @@ class UserPhoto < ActiveRecord::Base
 	validates :user_id, presence: true
 	validates :caption, length: { maximum: 140 }
 	validates :photo_width, presence: true
-	validates :photo_height, presence: truex
+	validates :photo_height, presence: true
 
 	# Validations for Photo's
 	validates :photo, presence: true

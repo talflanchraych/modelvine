@@ -44,7 +44,6 @@ class UserPhotosController < ApplicationController
 	# DELETE /user_photos/1
 	def destroy
 		@user_photo.destroy
-		#redirec to the current page
 		redirect_to :back
 	end
 
