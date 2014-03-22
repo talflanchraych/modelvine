@@ -1,7 +1,7 @@
 class UserPhoto < ActiveRecord::Base
 	belongs_to :user
 
-	has_attached_file :photo, :styles => { :medium => "300x300", :thumb => "200x200#" }, :default_url => "assets/images/:style/missing.png"
+	has_attached_file :photo, :styles => { :medium => "300>x300", :thumb => "200x200#" }, :default_url => "assets/images/:style/missing.png"
 
 	validates :user_id, presence: true
 	validates :caption, length: { maximum: 140 }
