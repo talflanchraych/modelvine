@@ -14,7 +14,7 @@
       <%= f.date_field :birth_date, start_year: 1900 %>
 
       <%= f.label :gender %>
-      <%= f.select :gender, ['Male', 'Female'] %>
+      <%= f.select :gender, ['Female', 'Male'] %>
 
       <%= f.label :height %>
       <%= f.select :height, height_list %>
@@ -51,9 +51,6 @@
 
       <%= f.label :website %>
       <%= f.text_field :website %>
-
-      <%= f.label :model_mayhem, "URL of Your Model Mayhem Profile" %>
-      <%= f.text_field :model_mayhem %>
 
       <%= f.label :bio %>
       <%= f.text_area :bio %>

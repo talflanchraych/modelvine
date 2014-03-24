@@ -22,11 +22,11 @@
 </section>
 <article class="content gridView">
 	<aside>
-		<h2>Bio</h2>
+		<h2>About</h2>
 		<p><%= @user.user_type.bio %></p>
 		<!-- <p class="more"><a href="">Read More</a></p> -->
 
-		<h2>General Information</h2>
+		<h2>STATS</h2>
 		<ul class="statistics">
 			<li class="size">
 				<div class="long">
@@ -44,7 +44,7 @@
 			<li class="height">
 				<div class="long">
 					<div class="short">
-						<p class="label">Size</p>
+						<p class="label">Measurements</p>
 						<p> <%= "#{@user.user_type.bust} / #{@user.user_type.waist} / #{@user.user_type.hips}" %> </p>
 					</div>
 					<div class="short">
