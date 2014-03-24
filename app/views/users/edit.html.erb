@@ -7,10 +7,13 @@
       <%= render 'shared/error_messages', object: @user %>
 
       <%= f.label :name %>
-      <%= f.text_field :name, placeholder: "Display Name" %>
+      <%= f.text_field :name %>
 
       <%= f.label :zip_code, "Location" %>
       <%= f.text_field :zip_code, placeholder: "Zip Code" %>
+
+      <%= f.label :username %>
+      <%= f.text_field :username %>
 
       <%= f.label :user_type_type, "What are you?" %>
       <% if @user.user_type %>

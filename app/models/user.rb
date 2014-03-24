@@ -7,16 +7,22 @@ class User < ActiveRecord::Base
   has_many :access_codes
   belongs_to :user_type, polymorphic: true
 
+  # User creation page
+
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
+  validates :email, format: { with: VALID_EMAIL_REGEX }
 
-  validates_presence_of :name, :zip_code, on: :update
+  ## Username Update Actions
+
+  validates_presence_of :name, :zip_code, :username, on: :update
+
   validates_format_of :zip_code, 
     with: /\A\d{5}-\d{4}|\A\d{5}\z/,
     message: "should be in the form 12345 or 12345-1234",
     on: :update
+
+  validates :username, uniqueness: true, on: :update
 
   ###########
   ##SCOPING##

@@ -38,13 +38,12 @@ gem 'aws-sdk'
 gem 'draper'
 
 group :development do
-  # gem 'sqlite3'
-  gem 'pry-rails'
-  gem 'pry'
   gem 'binding_of_caller'
 end
 
 group :development, :test do
+  gem 'pry-rails'
+  gem 'pry'
   gem "rspec-rails", "~> 2.14.0"
   gem "factory_girl_rails", "~> 4.2.1"
   gem 'faker', '1.1.2'
