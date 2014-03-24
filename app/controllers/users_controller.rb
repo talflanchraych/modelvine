@@ -16,9 +16,9 @@ class UsersController < ApplicationController
     @model = ModelDecorator.decorate(@user.user_type)
   end
 
-  # def edit
-  #   @user = User.find(params[:id])
-  # end
+  def edit
+    @user = User.find(params[:id])
+  end
 
   def update
     @user = current_user
@@ -105,7 +105,7 @@ class UsersController < ApplicationController
                                    :type_of_user, :user_website)
     end
 
-    # Before filters
+    #Before filters these should be applicaiton wide and from devise
 
     def correct_user
       @user = User.find(params[:id])
