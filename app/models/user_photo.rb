@@ -13,7 +13,7 @@ class UserPhoto < ActiveRecord::Base
 	# Don't let people upload Giant phot's and charge alot of out AWS account
 	validates_attachment_size :photo, :less_than => 10.megabytes
  	# Only let people uplad a photo
- 	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/jpg' 'image/tif']
+ 	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/jpg', 'image/tif']
 
  	# The default way the phot's will be listed
 	default_scope -> { order('created_at DESC') }
