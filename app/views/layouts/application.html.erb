@@ -22,7 +22,7 @@
 	</head>
 	<body class=<%= "#{controller_name}_#{action_name}" %>>
 	<%= render 'layouts/header' %>
-	  <div class="container">
+	  <div class="container clear-top">
 			<% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>

@@ -245,8 +245,10 @@ label {text-align:left;}
 }
 
 .footer{
+  position: relative;
   margin-top:50px;
   margin-bottom:50px;
+  clear: both;
   color:#9f9197
 }
 
