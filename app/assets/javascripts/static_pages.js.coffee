@@ -14,4 +14,4 @@ jQuery ->
 	  	$.post '/users/' + $(this).closest('li').data('user-id')+ '/set_default_photo/',
 	  		photo_id: $(this).closest('li').attr('id')
 	  		# on success return a messgae
-	  		(data) -> $('.notice').html "Sucessfully set the deafult photo"
+	  		(data) -> $('.notice').html "Sucessfully set as default photo"
