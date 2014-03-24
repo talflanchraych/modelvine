@@ -11,7 +11,7 @@ class UserPhoto < ActiveRecord::Base
 	# Validations for Photo's
 	validates :photo, presence: true
 	# Don't let people upload Giant phot's and charge alot of out AWS account
-	validates_attachment_size :photo, :less_than => 5.megabytes
+	validates_attachment_size :photo, :less_than => 10.megabytes
  	# Only let people uplad a photo
  	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/jpg' 'image/tif']
 
