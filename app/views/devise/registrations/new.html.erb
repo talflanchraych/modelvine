@@ -4,7 +4,7 @@
     <h2>Redeem Invite</h2>
     <%= f.error_notification %>
     <%= f.input :email, :required => true, :autofocus => true %>
-    <%= f.input :code_used, :required => true%>
+    <%= f.input :code_used, :label => "Access Code", :required => true  %>
     <%= f.input :password, :required => true, :label => "Password (8 character minimum)"%>
     <%= f.input :password_confirmation, :required => true %>
   </div>
