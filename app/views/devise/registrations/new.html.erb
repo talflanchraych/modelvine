@@ -6,7 +6,7 @@
     <%= f.input :email, :required => true, :autofocus => true %>
     <%= label_tag :access_code %>
     <%= text_field :access_code, :code, :required => true%>
-    <%= f.input :password, :required => true %>
+    <%= f.input :password, :required => true, :label => "Password (8 character minimum)"%>
     <%= f.input :password_confirmation, :required => true %>
   </div>
 
