@@ -7,8 +7,6 @@ class UsersController < ApplicationController
     @users = User.approved.paginate(page: params[:page])
   end
 
-  ##Registation Contoller and Devise, handles singing up new users
-
   def show
   	@user = User.find(params[:id])
     @user_photos = @user.user_photos
@@ -34,8 +32,6 @@ class UsersController < ApplicationController
     end
   end
 
-  #Admin users are the only one's who can do this
-  #Create admin users through heroku console
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted."
@@ -55,7 +51,6 @@ class UsersController < ApplicationController
   end
 
   def search
-    # this will give us a string of user type, "Model"
     user_type = params[:search][:user_type]
     zip_code = params[:search][:zip_code]
     # and needs to be constantized(to turn a string into a ruby class)
@@ -77,8 +72,6 @@ class UsersController < ApplicationController
 
   def manage_photos
     if user_signed_in?
-      # Allow users to add photo's if they are logged in, through the home page. 
-      # This action may need to be moved to another controller
       @user_photo = current_user.user_photos.build
       @user_photo_feed_items = current_user.user_photo_feed.paginate(page: params[:page])
     end
@@ -100,12 +93,10 @@ class UsersController < ApplicationController
 
     #Rails 4.0 Strong Paramaters
     def user_params
-      params.require(:user).permit(:name, :email, :password,
+      params.require(:user).permit(:name, :email, :code_used, :password,
                                    :password_confirmation, :zip_code, :username,
                                    :type_of_user, :user_website)
     end
-
-    #Before filters these should be applicaiton wide and from devise
 
     def correct_user
       @user = User.find(params[:id])

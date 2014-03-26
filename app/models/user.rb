@@ -7,21 +7,28 @@ class User < ActiveRecord::Base
   has_many :access_codes
   belongs_to :user_type, polymorphic: true
 
-  # User creation page
-
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, format: { with: VALID_EMAIL_REGEX }, presence: true
 
-  validates :email, format: { with: VALID_EMAIL_REGEX }
+  validate :validates_accesss_code, on: :create
 
-  ## Username Update Actions
+  def validates_accesss_code
+    current_code = AccessCode.find_by(code: code_used)
+    if current_code == nil
+      errors.add(:code_used, "This not a valid access code")
+    elsif current_code.used == true
+      errors.add(:code_used, "This access code has already been used")
+    else
+      current_code.used = true
+      current_code.save
+    end
+  end
 
   validates_presence_of :name, :zip_code, :username, on: :update
-
   validates_format_of :zip_code, 
     with: /\A\d{5}-\d{4}|\A\d{5}\z/,
     message: "should be in the form 12345 or 12345-1234",
     on: :update
-
   validates :username, uniqueness: true, on: :update
 
   ###########
@@ -29,8 +36,6 @@ class User < ActiveRecord::Base
   ###########
 
   default_scope -> { order('created_at DESC') }
-
-  ## in the controller action add .with_name or .approved to scope
 
   #Only Show Users on the User Index page, who have updated a name
   scope :with_name, -> { where("name <> ''") }

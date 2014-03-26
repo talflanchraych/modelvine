@@ -2,36 +2,54 @@ require 'spec_helper'
 
 describe User do 
 
-  it 'is valid with an email, password & password_confirmation' do 
-    user = User.new(
-      email: 'surgentt@gmail.com',
+  # User Creation 
+
+  it 'has a valid factory / Email, Password, Acces Code Works' do 
+    expect(build(:user)).to be_valid
+  end
+
+  it 'requires a valid access code to be created' do 
+    user = build(:user, code_used: "invalid_access_code")
+    expect(user).to have(1).errors_on(:code_used)
+  end
+
+  it 'access code can\'t be used twice' do 
+    gen_code = SecureRandom.hex
+    AccessCode.create(:code => gen_code)
+    create(:user, code_used: gen_code)
+    code_used = AccessCode.find_by(code: gen_code)
+    expect(code_used.used).to eq(true) 
+
+    user1 = User.create(
+      email: 'surgenttuniq@gmail.com',
       password: '123password',
-      password_confirmation: '123password')
-    expect(user).to be_valid
+      password_confirmation: '123password',
+      code_used: gen_code)   
+    expect(user1).to have(1).errors_on(:code_used) 
+  end
+
+  # Not implement yet
+  it 'marks the access code as used after sign up' do
+    gen_code = SecureRandom.hex
+    AccessCode.create(:code => gen_code)
+    create(:user, code_used: gen_code)
+    code_used = AccessCode.find_by(code: gen_code)
+    expect(code_used.used).to eq(true) 
   end
 
   it 'must have a unique email, case sentive false' do 
-    User.create(
-      email: 'surgentt@gmail.com',
-      password: '123password',
-      password_confirmation: '123password')
+    create(:user)
     user1 = User.new(
-      email: 'Surgentt@gmail.com',
-      password: '123password',
-      password_confirmation: '123password')
+      email: 'Surgentt@gmail.com',)
     expect(user1).to have(1).errors_on(:email)
   end
 
-  it 'requires an access code to be created' do 
-    pending "Is this going to occur on creation or update?"
-    pending "I think we are only validating this in the view, w/ tooltips"
-  end
+  # User Update
 
   it 'can be updated with a username, name, zip_code' do 
-    User.create(
-      email: 'surgentt@gmail.com',
-      password: '123password',
-      password_confirmation: '123password')
+    gen_code = 'abcafdsew'
+    AccessCode.create(:code => gen_code)
+    create(:user, code_used: gen_code)
     user = User.find_by(email: 'surgentt@gmail.com')
     user.update(
       name: 'Thomas Surgent',
@@ -41,15 +59,15 @@ describe User do
   end
 
   it 'must have a unique username on update' do 
-    User.create(
-      email: 'surgentt@gmail.com',
-      username: 'surgentt',
-      password: '123password',
-      password_confirmation: '123password')
+    gen_code = SecureRandom.hex
+    AccessCode.create(:code => gen_code)
+
+    user = create(:user, username: 'surgentt')
     user1 = User.create(
       email: 'surgenttuniq@gmail.com',
       password: '123password',
-      password_confirmation: '123password')
+      password_confirmation: '123password',
+      code_used: gen_code)
     user1 = User.find_by(email: 'surgenttuniq@gmail.com')
     user1.update(
       username: 'surgentt',
