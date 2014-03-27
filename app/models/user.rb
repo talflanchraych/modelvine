@@ -29,7 +29,10 @@ class User < ActiveRecord::Base
     with: /\A\d{5}-\d{4}|\A\d{5}\z/,
     message: "should be in the form 12345 or 12345-1234",
     on: :update
-  validates :username, uniqueness: true, on: :update
+  validates :username, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\Z/ }, on: :update
+
+  extend FriendlyId
+  friendly_id :username
 
   ###########
   ##SCOPING##

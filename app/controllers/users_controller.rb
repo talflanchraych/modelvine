@@ -8,14 +8,14 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
+  	@user = User.friendly.find(params[:id])
     @user_photos = @user.user_photos
     @user_type_attributes = @user.user_type.attributes.reject {|x| x.include?("_at") || x.include?("id") }
     @model = ModelDecorator.decorate(@user.user_type)
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
   end
 
   def update
@@ -99,7 +99,7 @@ class UsersController < ApplicationController
     end
 
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.friendly.find(params[:id])
       redirect_to(root_url) unless current_user
     end
 

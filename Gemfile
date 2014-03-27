@@ -36,6 +36,7 @@ gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
 #Decorator
 gem 'draper'
+gem 'friendly_id'
 
 group :development do
   gem 'binding_of_caller'

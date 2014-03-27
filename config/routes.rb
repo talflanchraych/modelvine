@@ -24,6 +24,7 @@ FiscalFitness::Application.routes.draw do
 
   match '/manage_photos', to: 'users#manage_photos', via: 'get'
 
+  # Duplicate route, This should always be nested
   resources :models, :photographers, :agencies, :businesses, :makeup_artists
   resources :user_photos
 

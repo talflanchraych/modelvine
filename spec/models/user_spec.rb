@@ -76,4 +76,9 @@ describe User do
     expect(user1).to have(1).errors_on(:username)
   end
 
+  it "username cannot have any spaces" do
+    user = create(:user, username: 'surgent t')
+    expect(user).to have(1).errors_on(:username)
+  end
+
 end
