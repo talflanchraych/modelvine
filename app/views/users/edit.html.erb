@@ -21,10 +21,11 @@
       <% else %>
         <%= f.select :user_type_type,
                                    [['Model', 'Model'],
-                                   ['Photographer', 'Photographer'],
-                                   ['Business', 'Business'], 
-                                   ['Make Up Artist', 'MakeupArtist'],
-                                   ['Agency', 'Agency']], placeholder: "What are you?" %>
+                                   #['Photographer', 'Photographer'],
+                                   #['Business', 'Business'], 
+                                   #['Make Up Artist', 'MakeupArtist'],
+                                   #['Agency', 'Agency']
+                                   ], placeholder: "Who are you?" %>
       <% end %>
 
       <%= f.submit "Next", class: "btn btn-large btn-primary" %>
