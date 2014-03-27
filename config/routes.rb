@@ -3,7 +3,6 @@ FiscalFitness::Application.routes.draw do
   # resources gives :users all RESTful routes
 
   resources :users do
-    resources :models, :photographers, :agencies, :businesses, :makeup_artists
     member do
       post :set_default_photo
     end
@@ -13,6 +12,10 @@ FiscalFitness::Application.routes.draw do
       post :generate_invites
     end
   end
+
+  # Duplicate route, This should always be nested
+  resources :models, :photographers, :agencies, :businesses, :makeup_artists
+  resources :user_photos
 
   root 'static_pages#home', via: 'get'
   match '/help',    to: 'static_pages#help',    via: 'get'
@@ -24,10 +27,6 @@ FiscalFitness::Application.routes.draw do
   match '/privacy', to: 'static_pages#privacy', via: 'get'
 
   match '/manage_photos', to: 'users#manage_photos', via: 'get'
-
-  # Duplicate route, This should always be nested
-  resources :models, :photographers, :agencies, :businesses, :makeup_artists
-  resources :user_photos
 
   resources :sessions, only: [:new, :create, :destroy] 
 

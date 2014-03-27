@@ -5,4 +5,9 @@ class Model < ActiveRecord::Base
     :eye_color, :hair_color, presence: true,
     on: :update
 
+  delegate :username, to: :user, :allow_nil => true
+
+  extend FriendlyId
+  friendly_id :username
+
 end
