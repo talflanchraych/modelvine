@@ -2,8 +2,6 @@ require 'spec_helper'
 
 describe User do 
 
-  # User Creation 
-
   it 'has a valid factory / Email, Password, Acces Code Works' do 
     expect(build(:user)).to be_valid
   end
@@ -28,13 +26,16 @@ describe User do
     expect(user1).to have(1).errors_on(:code_used) 
   end
 
-  # Not implement yet
   it 'marks the access code as used after sign up' do
     gen_code = SecureRandom.hex
     AccessCode.create(:code => gen_code)
     create(:user, code_used: gen_code)
     code_used = AccessCode.find_by(code: gen_code)
     expect(code_used.used).to eq(true) 
+  end
+
+  it 'informs another user that one of their access codes has been used' do 
+    pending 
   end
 
   it 'must have a unique email, case sentive false' do 
