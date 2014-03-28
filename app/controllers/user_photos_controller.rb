@@ -26,25 +26,22 @@ class UserPhotosController < ApplicationController
 		if @user_photo.save
 			#Write the name of the file to the screen
 			current_user.touch
-			# if the photo was saved successfully and user does want to set it as default
 			if params[:default_photo] == "1" || current_user.user_photos.size == 1
 				current_user.update_attributes(default_photo_id: @user_photo.id)
 			end
 			flash[:success] = "Photo successfully added!"
-			# This needs to be updated to reflect Asset PipeLine
-			redirect_to :back
+			redirect_to edit_model_path(current_user)
 		else
 			@user_photo_feed_items = []
 			flash[:alert] = "Photo not added!"
-			# render action: "new"
-			redirect_to :back
+			redirect_to edit_model_path(current_user)
 		end
 	end
 
 	# DELETE /user_photos/1
 	def destroy
 		@user_photo.destroy
-		redirect_to :back
+		redirect_to edit_model_path(current_user)
 	end
 
 
