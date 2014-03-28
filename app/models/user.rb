@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   def validates_accesss_code
     current_code = AccessCode.find_by(code: code_used)
     if current_code == nil
-      errors.add(:code_used, "This not a valid access code")
+      errors.add(:code_used, "This is not a valid access code")
     elsif current_code.used == true
       errors.add(:code_used, "This access code has already been used")
     else
