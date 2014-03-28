@@ -34,10 +34,6 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username
 
-  ###########
-  ##SCOPING##
-  ###########
-
   default_scope -> { order('created_at DESC') }
 
   #Only Show Users on the User Index page, who have updated a name
