@@ -51,23 +51,6 @@ class User < ActiveRecord::Base
 
   scope :recently_updated, -> { unscoped.order('updated_at DESC') }
 
-  ################
-  ##User Methods##
-  ################
-
-  # Sign in user
-  # Probably overwirtten with Devise
-  def User.new_remember_token
-    SecureRandom.urlsafe_base64
-  end
-
-  #Keep user signed in
-  def User.encrypt(token)
-    Digest::SHA1.hexdigest(token.to_s)
-  end
-
-  #Methods to keep
-
   def user_photo_feed
     UserPhoto.where("user_id = ?", id)
   end
@@ -86,10 +69,4 @@ class User < ActiveRecord::Base
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
-  private
-
-    # Automatically keep users signed in
-    def create_remember_token
-      self.remember_token = User.encrypt(User.new_remember_token)
-    end
 end
