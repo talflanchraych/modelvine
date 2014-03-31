@@ -8,11 +8,24 @@ class User < ActiveRecord::Base
   belongs_to :user_type, polymorphic: true
 
   after_create :give_user_invites
+  after_create :mark_code_as_used_by
 
   def give_user_invites
     10.times do
       self.access_codes << AccessCode.create(code: self.generate_code, user_id: self.id)
     end
+  end
+
+  def generate_code
+    SecureRandom.hex
+  end
+
+  # I am doing to same find twice, See validates access code. This can be speed up. 
+  def mark_code_as_used_by
+    #binding.pry
+    current_code = AccessCode.find_by(code: code_used)
+    current_code.used_by = self.id
+    current_code.save
   end
 
   ###############
@@ -32,8 +45,6 @@ class User < ActiveRecord::Base
       errors.add(:code_used, "This access code has already been used")
     else
       current_code.used = true
-      #current_code.mark_as_used(self.id)
-      # I need a call back here of sorts. 
       current_code.save
     end
   end
@@ -88,10 +99,6 @@ class User < ActiveRecord::Base
     dob = user_type.birth_date
     now = Time.now.utc.to_date
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
-  end
-
-  def generate_code
-    SecureRandom.hex
   end
 
 end

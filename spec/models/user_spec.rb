@@ -34,7 +34,7 @@ describe User do
     expect(code_used.used).to eq(true) 
   end
 
-  it 'it allows one user to give another user a code' do 
+  it 'it allows one user to give another user a code and the id to be set' do 
     user = create(:user)
     given_code = user.access_codes.first
     user1 = User.create(
