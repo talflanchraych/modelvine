@@ -7,7 +7,7 @@
       <% if signed_in? %>
         <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>  
         <% if current_user.user_type != nil %>
-          <%= link_to "Invite Friends", invite_users_path %>
+          <%= link_to "Invite Friends", invite_users_path(current_user) %>
           <%= link_to "Manage Profile", edit_model_path(current_user) %>
           <%= link_to "View Profile", current_user %>
         <% end %>  

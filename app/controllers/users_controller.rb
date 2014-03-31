@@ -44,10 +44,10 @@ class UsersController < ApplicationController
 
   def generate_invites
     number_of_invites = params[:number_of_invites][:number_of_invites].to_i
-    @access_codes = []
     number_of_invites.times do
-      @access_codes.unshift current_user.access_codes.create
+      current_user.access_codes << AccessCode.create
     end
+    redirect_to invite_users_path(current_user)
   end
 
   def search
@@ -95,7 +95,7 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :code_used, :password,
                                    :password_confirmation, :zip_code, :username,
-                                   :type_of_user, :user_website)
+                                   :type_of_user, :user_website, :number_of_invites)
     end
 
     def correct_user

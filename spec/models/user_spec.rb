@@ -45,6 +45,11 @@ describe User do
     expect(user1).to have(1).errors_on(:email)
   end
 
+  it "generates 10 invite code on signup" do 
+    user = create(:user)
+    expect(user.access_codes.count).to eq(10)
+  end
+
   # User Update
 
   it 'can be updated with a username, name, zip_code' do 

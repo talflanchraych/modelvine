@@ -1,6 +1,11 @@
 FiscalFitness::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
-  # resources gives :users all RESTful routes
+
+  resources :sessions, only: [:new, :create, :destroy] 
+
+  devise_scope :user do 
+    match '/sessions/user', to: 'devise/sessions#create', via: :post
+  end
 
   resources :users do
     member do
@@ -13,7 +18,6 @@ FiscalFitness::Application.routes.draw do
     end
   end
 
-  # Duplicate route, This should always be nested
   resources :models, :photographers, :agencies, :businesses, :makeup_artists
   resources :user_photos
 
@@ -27,12 +31,5 @@ FiscalFitness::Application.routes.draw do
   match '/privacy', to: 'static_pages#privacy', via: 'get'
 
   match '/manage_photos', to: 'users#manage_photos', via: 'get'
-
-  resources :sessions, only: [:new, :create, :destroy] 
-
-  devise_scope :user do 
-    match '/sessions/user', to: 'devise/sessions#create', via: :post
-  end
-
 
 end

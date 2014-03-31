@@ -7,6 +7,11 @@ class User < ActiveRecord::Base
   has_many :access_codes
   belongs_to :user_type, polymorphic: true
 
+
+  ###############
+  # Validations #
+  ###############
+
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: { with: VALID_EMAIL_REGEX }, presence: true
 
@@ -31,8 +36,15 @@ class User < ActiveRecord::Base
     on: :update
   validates :username, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\Z/ }, on: :update
 
+  # URL Helper #
+
   extend FriendlyId
   friendly_id :username
+
+
+  ###########
+  # SCOPING #
+  ###########
 
   default_scope -> { order('created_at DESC') }
 
@@ -46,6 +58,10 @@ class User < ActiveRecord::Base
   scope :type_of_user_model, -> { where(:type_of_user == "Model") }
 
   scope :recently_updated, -> { unscoped.order('updated_at DESC') }
+
+  ###########
+  # Methods #
+  ###########
 
   def user_photo_feed
     UserPhoto.where("user_id = ?", id)
