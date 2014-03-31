@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, only: [:edit, :update, :invite]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
+
   
   def index
     @users = User.approved.paginate(page: params[:page])
@@ -88,6 +89,7 @@ class UsersController < ApplicationController
     # set the new default photo
     render text: "Default photo set successfully"
   end
+
 
   private
 

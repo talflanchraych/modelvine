@@ -7,6 +7,13 @@ class User < ActiveRecord::Base
   has_many :access_codes
   belongs_to :user_type, polymorphic: true
 
+  after_create :give_user_invites
+
+  def give_user_invites
+    10.times do
+      self.access_codes << AccessCode.create(code: self.generate_code, user_id: self.id)
+    end
+  end
 
   ###############
   # Validations #
@@ -79,6 +86,10 @@ class User < ActiveRecord::Base
     dob = user_type.birth_date
     now = Time.now.utc.to_date
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+  end
+
+  def generate_code
+    SecureRandom.hex
   end
 
 end
