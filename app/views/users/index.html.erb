@@ -1,11 +1,11 @@
 <% provide(:title, 'All users') %>
 <h1>Search for users</h1>
 
-<%= render "shared/search_form" %>
+<%#= render "shared/search_form" %>
 
 <%= will_paginate @users %>
 
-<ul class="users span8">
+<ul class="users span12">
   <% @users.each do |user| %>
       <%= render user %>
   <% end %>
