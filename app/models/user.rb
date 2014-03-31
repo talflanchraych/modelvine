@@ -7,6 +7,30 @@ class User < ActiveRecord::Base
   has_many :access_codes
   belongs_to :user_type, polymorphic: true
 
+  after_create :give_user_invites
+  after_create :mark_code_as_used_by
+
+  def give_user_invites
+    10.times do
+      self.access_codes << AccessCode.create(code: self.generate_code, user_id: self.id)
+    end
+  end
+
+  def generate_code
+    SecureRandom.hex
+  end
+
+  # I am doing to same find twice, See validates access code. This code can be cleaned up to speed up the application. 
+  def mark_code_as_used_by
+    current_code = AccessCode.find_by(code: code_used)
+    current_code.used_by = self.id
+    current_code.save
+  end
+
+  ###############
+  # Validations #
+  ###############
+
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, format: { with: VALID_EMAIL_REGEX }, presence: true
 
@@ -31,8 +55,15 @@ class User < ActiveRecord::Base
     on: :update
   validates :username, uniqueness: true, format: { with: /\A[a-zA-Z0-9]+\Z/ }, on: :update
 
+  # URL Helper #
+
   extend FriendlyId
   friendly_id :username
+
+
+  ###########
+  # SCOPING #
+  ###########
 
   default_scope -> { order('created_at DESC') }
 
@@ -46,6 +77,10 @@ class User < ActiveRecord::Base
   scope :type_of_user_model, -> { where(:type_of_user == "Model") }
 
   scope :recently_updated, -> { unscoped.order('updated_at DESC') }
+
+  ###########
+  # Methods #
+  ###########
 
   def user_photo_feed
     UserPhoto.where("user_id = ?", id)

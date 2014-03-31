@@ -1,13 +1,9 @@
 class AccessCode < ActiveRecord::Base
 	belongs_to :user
 
-	before_validation do
-		self.code
-	end
-
 	validates :code, presence: true
 
-	def code
+	def generate_code
 		SecureRandom.hex
 	end
 

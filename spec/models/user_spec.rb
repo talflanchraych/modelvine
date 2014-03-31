@@ -6,6 +6,11 @@ describe User do
     expect(build(:user)).to be_valid
   end
 
+  it 'defaults to approved on sign up' do
+    user = build(:user)
+    expect(user.approved).to eq(true)
+  end
+
   it 'requires a valid access code to be created' do 
     user = build(:user, code_used: "invalid_access_code")
     expect(user).to have(1).errors_on(:code_used)
@@ -34,8 +39,19 @@ describe User do
     expect(code_used.used).to eq(true) 
   end
 
-  it 'informs another user that one of their access codes has been used' do 
-    pending 
+  it 'it allows one user to give another user a code and the id to be set' do 
+    user = create(:user)
+    given_code = user.access_codes.first
+    user1 = User.create(
+      email: 'surgentasdftuniq@gmail.com',
+      username: 'somethingdnew',
+      password: '123password',
+      password_confirmation: '123password',
+      code_used: given_code.code,
+      username: 'surgendastt',
+      name: 'bob surgent',
+      zip_code: '10009')
+    expect(given_code.used_by).to eq(user1.id)
   end
 
   it 'must have a unique email, case sentive false' do 
@@ -43,6 +59,11 @@ describe User do
     user1 = User.new(
       email: 'Surgentt@gmail.com',)
     expect(user1).to have(1).errors_on(:email)
+  end
+
+  it "generates 10 invite code on signup" do 
+    user = create(:user)
+    expect(user.access_codes.count).to eq(10)
   end
 
   # User Update

@@ -19,7 +19,7 @@ describe Model do
     expect(user_model).to be_valid
   end
 
-  it 'does not allow a model to be updated without a picture' do 
+  it 'does not allow a model to be updated without a picture or a birthdate' do 
     model = Model.create
     gen_code = SecureRandom.hex
     AccessCode.create(:code => gen_code)
@@ -36,13 +36,13 @@ describe Model do
       user_type_id: model.id)
     #binding.pry
     model.update(
-      birth_date:"2014-03-28 09:32:07 -0400",
       gender: "male", 
       height: "female", 
       ethnicity: "caucasion",
       eye_color: "blue", 
       hair_color: "blond")
-    expect(model).to have(1).error
+    expect(model).to have(2).error
   end
+
 
 end

@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, only: [:edit, :update, :invite]
   before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+  before_action :admin_user,     only: [:index, :destroy]
+
   
   def index
-    @users = User.approved.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page])
   end
 
   def show
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    User.friendly.find(params[:id]).destroy
     flash[:success] = "User deleted."
     redirect_to users_url
   end
@@ -42,21 +43,18 @@ class UsersController < ApplicationController
     @access_codes = AccessCodeDecorator.decorate_collection(current_user.access_codes)
   end
 
-  def generate_invites
-    number_of_invites = params[:number_of_invites][:number_of_invites].to_i
-    @access_codes = []
-    number_of_invites.times do
-      @access_codes.unshift current_user.access_codes.create
-    end
-  end
+  # Don't let users create their own access codes. 
+  # def generate_invites
+  #   number_of_invites = params[:number_of_invites][:number_of_invites].to_i
+  #   number_of_invites.times do
+  #     current_user.access_codes << AccessCode.create
+  #   end
+  #   redirect_to invite_users_path(current_user)
+  # end
 
   def search
     user_type = params[:search][:user_type]
     zip_code = params[:search][:zip_code]
-    # and needs to be constantized(to turn a string into a ruby class)
-    # and to map the user associated with model object
-    # so we now have an array of all users are models
-    # and reject(to filter out) all users does not have a matched zip code
     if user_type == "All"
       @users = User.approved
     else
@@ -85,9 +83,9 @@ class UsersController < ApplicationController
     if photo
       user.update_attributes(default_photo_id: photo.id)
     end
-    # set the new default photo
     render text: "Default photo set successfully"
   end
+
 
   private
 

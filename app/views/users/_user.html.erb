@@ -1,11 +1,20 @@
 <li>
   <% if user.get_default_photo %>	
   	<%= image_tag user.get_default_photo.photo.url (:thumb), class: 'default_photo' %>
-    <% else %>
-      <%= image_tag("thumb/missing.png")  %>
-    <% end %>
-    <%= link_to user.name, user %>
-    <% user.get_regular_photo.each do |x| %>
-      <%= image_tag x.photo.url (:thumb), class: 'other_photos' %>
-    <% end %>
+  <% else %>
+    <%= image_tag("thumb/missing.png")  %>
+  <% end %>
+
+  <%= link_to user.name, user %>
+
+  <% user.get_regular_photo.each do |x| %>
+    <%= image_tag x.photo.url (:thumb), class: 'other_photos' %>
+  <% end %>
+
+  <% if current_user.admin? && !current_user?(user) %>
+    | Approved: <%= user.approved %>
+    | <%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+
 </li>
