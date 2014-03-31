@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
 
   # I am doing to same find twice, See validates access code. This can be speed up. 
   def mark_code_as_used_by
-    #binding.pry
     current_code = AccessCode.find_by(code: code_used)
     current_code.used_by = self.id
     current_code.save

@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, only: [:edit, :update, :invite]
   before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+  before_action :admin_user,     only: [:index, :destroy]
 
   
   def index
-    @users = User.approved.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page])
   end
 
   def show

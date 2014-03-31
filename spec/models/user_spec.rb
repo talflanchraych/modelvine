@@ -38,11 +38,14 @@ describe User do
     user = create(:user)
     given_code = user.access_codes.first
     user1 = User.create(
-      email: 'surgenttuniq@gmail.com',
-      username: 'somethingnew',
+      email: 'surgentasdftuniq@gmail.com',
+      username: 'somethingdnew',
       password: '123password',
       password_confirmation: '123password',
-      code_used: given_code.code)
+      code_used: given_code.code,
+      username: 'surgendastt',
+      name: 'bob surgent',
+      zip_code: '10009')
     expect(given_code.used_by).to eq(user1.id)
   end
 
