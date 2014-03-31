@@ -6,6 +6,11 @@ describe User do
     expect(build(:user)).to be_valid
   end
 
+  it 'defaults to approved on sign up' do
+    user = build(:user)
+    expect(user.approved).to eq(true)
+  end
+
   it 'requires a valid access code to be created' do 
     user = build(:user, code_used: "invalid_access_code")
     expect(user).to have(1).errors_on(:code_used)

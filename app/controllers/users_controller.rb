@@ -55,10 +55,6 @@ class UsersController < ApplicationController
   def search
     user_type = params[:search][:user_type]
     zip_code = params[:search][:zip_code]
-    # and needs to be constantized(to turn a string into a ruby class)
-    # and to map the user associated with model object
-    # so we now have an array of all users are models
-    # and reject(to filter out) all users does not have a matched zip code
     if user_type == "All"
       @users = User.approved
     else

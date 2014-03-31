@@ -12,6 +12,7 @@
   <% end %>
 
   <% if current_user.admin? && !current_user?(user) %>
+    | Approved: <%= user.approved %>
     | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" } %>
   <% end %>

@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     SecureRandom.hex
   end
 
-  # I am doing to same find twice, See validates access code. This can be speed up. 
+  # I am doing to same find twice, See validates access code. This code can be cleaned up to speed up the application. 
   def mark_code_as_used_by
     current_code = AccessCode.find_by(code: code_used)
     current_code.used_by = self.id
