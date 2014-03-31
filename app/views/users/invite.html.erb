@@ -20,8 +20,10 @@ Invite Codes Available:
 	</tbody>
 </table>
 
-<%= form_tag generate_invites_users_path do %>
-	<%= label_tag :number_of_invites %>
-	<%= text_field :number_of_invites, :number_of_invites %>
-	<%= submit_tag "Generate Invites", :name => nil %>
-<% end %>
+
+<!-- Don't let users create their own access codes -->
+<%#= form_tag generate_invites_users_path do %>
+	<%#= label_tag :number_of_invites %>
+	<%#= text_field :number_of_invites, :number_of_invites %>
+	<%#= submit_tag "Generate Invites", :name => nil %>
+<%# end %>

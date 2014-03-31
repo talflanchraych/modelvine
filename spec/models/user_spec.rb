@@ -34,8 +34,16 @@ describe User do
     expect(code_used.used).to eq(true) 
   end
 
-  it 'informs another user that one of their access codes has been used' do 
-    pending 
+  it 'it allows one user to give another user a code' do 
+    user = create(:user)
+    given_code = user.access_codes.first
+    user1 = User.create(
+      email: 'surgenttuniq@gmail.com',
+      username: 'somethingnew',
+      password: '123password',
+      password_confirmation: '123password',
+      code_used: given_code.code)
+    expect(given_code.used_by).to eq(user1.id)
   end
 
   it 'must have a unique email, case sentive false' do 

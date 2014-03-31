@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
       errors.add(:code_used, "This access code has already been used")
     else
       current_code.used = true
+      #current_code.mark_as_used(self.id)
+      # I need a call back here of sorts. 
       current_code.save
     end
   end

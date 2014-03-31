@@ -43,13 +43,14 @@ class UsersController < ApplicationController
     @access_codes = AccessCodeDecorator.decorate_collection(current_user.access_codes)
   end
 
-  def generate_invites
-    number_of_invites = params[:number_of_invites][:number_of_invites].to_i
-    number_of_invites.times do
-      current_user.access_codes << AccessCode.create
-    end
-    redirect_to invite_users_path(current_user)
-  end
+  # Don't let users create their own access codes. 
+  # def generate_invites
+  #   number_of_invites = params[:number_of_invites][:number_of_invites].to_i
+  #   number_of_invites.times do
+  #     current_user.access_codes << AccessCode.create
+  #   end
+  #   redirect_to invite_users_path(current_user)
+  # end
 
   def search
     user_type = params[:search][:user_type]
@@ -86,7 +87,6 @@ class UsersController < ApplicationController
     if photo
       user.update_attributes(default_photo_id: photo.id)
     end
-    # set the new default photo
     render text: "Default photo set successfully"
   end
 
@@ -97,7 +97,7 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :code_used, :password,
                                    :password_confirmation, :zip_code, :username,
-                                   :type_of_user, :user_website, :number_of_invites)
+                                   :type_of_user, :user_website)
     end
 
     def correct_user
