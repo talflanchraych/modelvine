@@ -8,7 +8,6 @@ $(document).ready ->
 	  for image in instance.images
 	  	height = image.img.height
 	  	$(image.img).parent().height(height)
-	  console.log "DONE  - all images have been successfully loaded"
 	  msnry = new Masonry(container,
 	    columnWidth: 300
 	    itemSelector: ".photo-brick"
