@@ -1,0 +1,28 @@
+<h1>Your conversation with <%= @user.name %> </h1>
+
+<% content_for(:javascript) do %>
+	<script type="text/javascript">
+		var myDataRef = new Firebase('https://crackling-fire-5656.firebaseio.com/<%=[@user.id, current_user.id].sort.join("-")%>');
+		myDataRef.on('child_added', function(snapshot) {
+  			var obj = snapshot.val();
+  			var text = [obj.name, obj.text].join(": ");
+  			var li = $("<li/>").html(text).appendTo("#messagelist");
+  			$("#message").val("")
+		});
+
+		$("#submitmessage").on({
+			click:function(e){
+				e.preventDefault()
+				myDataRef.push({name: "<%= @user.name %>", text: $("#message").val()})
+			}
+		})
+	</script>
+	<% end %>
+
+
+	<ul id="messagelist">
+	</ul>
+
+	<form> 
+		<textarea id="message"></textarea><a href="#" id="submitmessage">submit</a>
+	</form>

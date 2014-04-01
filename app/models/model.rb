@@ -9,7 +9,7 @@ class Model < ActiveRecord::Base
   
   def has_uploaded_a_photo
     if self.user.user_photos.count < 1
-      errors.add(:base, "Please upload at least one photo to continue")
+      errors.add(:base, "Please upload at least 1 photo to continue")
     end
   end  
 

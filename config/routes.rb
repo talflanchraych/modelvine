@@ -10,6 +10,7 @@ FiscalFitness::Application.routes.draw do
   resources :users do
     member do
       post :set_default_photo
+      get :conversation
     end
     collection do
       post :search
