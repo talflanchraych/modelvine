@@ -13,4 +13,8 @@ $(document).ready ->
 	    itemSelector: ".photo-brick"
 	    gutter: 1
 	  )
+	  elems = msnry.getItemElements()
+	  maxImagesPerColumn = Math.ceil(elems.length / 3)
+	  originalHeight = $(".photo-grid").height()
+	  $(".photo-grid").height(originalHeight + maxImagesPerColumn + 1)
 	  return
