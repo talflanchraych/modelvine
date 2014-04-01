@@ -452,6 +452,7 @@ aside .skills li.more a:hover {
 .gridView {
  background: #3e3438 url('bg-aside.jpg');
  padding-top: 3px;
+ min-width: 1173px;
 }
 .gridView .grid .brick {
  width: 300px;
@@ -768,7 +769,7 @@ article.content {
 }
 .photo-wall {
    margin-right: 0;
-   // width: 80%;
+   min-width: 905px;
    .photo-grid {
       min-height: 700px;
       min-width: 905px;
@@ -778,7 +779,6 @@ article.content {
          img {
           width: 100%;
           height: auto;
-          margin-top: -3px;
           margin-bottom: 40px;
           border: 1px solid white;
          }
