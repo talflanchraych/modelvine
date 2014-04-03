@@ -11,9 +11,9 @@ class UserPhoto < ActiveRecord::Base
 	validates_attachment_size :photo, :less_than => 10.megabytes
  	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/jpg', 'image/tif']
 
-	default_scope -> { order('created_at DESC') }
+	default_scope -> { order('created_at DESC')}
 
-	scope :default_photo, -> { where(default_photo: true )}
+	scope :approved_users, -> { joins(:user).where('users.approved = true') }
 	
 	after_post_process :save_image_dimensions
 

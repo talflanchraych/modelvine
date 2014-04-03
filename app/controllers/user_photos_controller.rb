@@ -6,7 +6,7 @@ class UserPhotosController < ApplicationController
 
 	# GET /user_photos
 	def index
-		@user_photos = UserPhoto.all
+		@user_photos = UserPhoto.approved_users
 	end
 
 	def show
