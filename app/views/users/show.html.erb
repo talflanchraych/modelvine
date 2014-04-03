@@ -10,15 +10,16 @@
 		<p><%= @user.user_type.website %></p>
 	</div>
 	<div class="clear"></div>
-<!-- 	<div class="follow">
-		<div class="following">
+	<div class="follow">
+		<%= link_to("send a message", conversation_user_path(@user))%>
+<!-- 		<div class="following">
 			<p>7,304 <small>following</small></p>
 		</div>
 		<div class="followers">
 			<p>184 <small>followers</small></p>
 		</div>
-		<a href="" class="btn"><div class="ico"></div>Follow</a>
-	</div> -->
+		<a href="" class="btn"><div class="ico"></div>Follow</a> -->
+	</div>
 </section>
 <article class="content gridView">
 	<aside>
