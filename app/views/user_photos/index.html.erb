@@ -1,16 +1,12 @@
-<h1>Listing ALL User Photo's Uploaded to the Site</h1>
+<h1>Listing last 10 User Photo's Uploaded</h1>
 
 <% @user_photos.each do |user_photo| %>
 
   <!-- link_to image_tag("path/to/image.png"), "http://www.mysite.com/" -->
   <div><%= link_to image_tag(user_photo.photo.url (:medium)), user_path(user_photo.user) %></div>
-  <div>Caption: <%= user_photo.caption %></div>
-  <div>Uploaded: <%= user_photo.updated_at %></div>
-  <div>User: <%= user_photo.user.name %></div>
-
-    <%= link_to("Show", {:action => 'show', :id => user_photo.id}, :class => 'action show') %> 
-    <br>
+  <div><%= user_photo.caption %></div>
+  <div>Uploaded: <%= user_photo.relative_time(user_photo.created_at) %></div>
+  <div><%= user_photo.user.name %></div>
+  <div><%= image_tag user_photo.user.get_default_photo.photo.url (:micro) %></div>
 
 <% end %>
-
-<%= link_to "New Photo", new_user_photo_path %>
