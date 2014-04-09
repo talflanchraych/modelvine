@@ -2,13 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//.user_s_controller_action_name {
-  
-//}
-
-// What are these Style Sheet related to. 
-// Which action in which controller
-
 	body.users_show{
 		aside h2{
 			text-align: left;
@@ -50,15 +43,15 @@
 	}
 
 	form, form#newuser, .new_user {
-	background: #4c4246;
-	width: 500px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 400px;
-	padding: 30px;
-	margin: 70px auto 100px;
-	border-radius: 4px;
-	zoom: 1;
+		background: #4c4246;
+		width: 500px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 400px;
+		padding: 30px;
+		margin: 70px auto 100px;
+		border-radius: 4px;
+		zoom: 1;
 	}
 
 	select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input{

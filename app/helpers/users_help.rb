@@ -1,4 +1,4 @@
-# module UsersHelper
+module UsersHelper
 
 #   def user_type_list 
 #    [['Model', 'Model'],
@@ -7,5 +7,5 @@
 #    ['Make Up Artist', 'MakeupArtist'],
 #    ['Agency', 'Agency']] 
 #   end
-  
-# end
+
+end

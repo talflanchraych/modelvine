@@ -24,7 +24,6 @@ class UserPhoto < ActiveRecord::Base
 	end
 
 	def relative_time(start_time)
-		#binding.pry
 	  diff_seconds = (Time.now - start_time).to_i
 	  case diff_seconds
 	    when 0 .. 59

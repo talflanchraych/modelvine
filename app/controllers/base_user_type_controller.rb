@@ -1,4 +1,4 @@
-## This is the master controller for all different types of users
+# This is the master controller for all different types of users
 
 class BaseUserTypeController < ApplicationController
 

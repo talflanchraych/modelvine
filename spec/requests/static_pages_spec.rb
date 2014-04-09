@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 ## Hartl Tutorial Code
 # describe "Static pages" do
 

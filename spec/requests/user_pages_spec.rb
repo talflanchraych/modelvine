@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-
-
 ## Hartl Tutorial Code
 # describe "User pages" do
 

@@ -1,4 +1,4 @@
-<li id="<%= user_photo_feed_item.id %>", data-user-id=<%= user_photo_feed_item.user.id%> >
+<div id="<%= user_photo_feed_item.id %>", data-user-id=<%= user_photo_feed_item.user.id%> >
   <!-- Call (:medium) to display :medium size -->
   <div>
       <%= image_tag user_photo_feed_item.photo.url (:medium) %>
@@ -23,4 +23,4 @@
                                       data: { confirm: "Are you sure?" },
                                       title: user_photo_feed_item.caption %>
   <% end %>
-</li>
+</div>

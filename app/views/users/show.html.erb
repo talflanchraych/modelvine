@@ -5,13 +5,14 @@
 	<% end %>
 	<div class="userDetails">
 		<p class="name"><%= @user.name %></p>
+		<%= link_to("send a message", conversation_user_path(@user)) unless current_user.id == @user.id %>
 		<p class="city"><%= @user.zip_code %></p>
 		<p><%= @user.age %> years old</p>
 		<p><%= @user.user_type.website %></p>
 	</div>
 	<div class="clear"></div>
 	<!-- <div class="follow"> -->
-		<%#= link_to("send a message", conversation_user_path(@user))%>
+		
 <!-- 		<div class="following">
 			<p>7,304 <small>following</small></p>
 		</div>

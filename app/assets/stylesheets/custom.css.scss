@@ -2,6 +2,12 @@
 
 $grayMediumLight: #eaeaea;
 
+
+.bootstrap_center {
+ margin:0 auto;
+ float:none;
+}
+
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;

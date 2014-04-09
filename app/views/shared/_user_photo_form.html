@@ -2,7 +2,6 @@
 
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-  	<!-- Add the Paperclip, photo uploading portion here -->
   	<%= f.file_field :photo %>
     <%= f.text_area :caption, placeholder: "Add a caption to the photo" %>
 
