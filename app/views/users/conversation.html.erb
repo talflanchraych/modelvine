@@ -2,18 +2,24 @@
 
 <% content_for(:javascript) do %>
 	<script type="text/javascript">
+
+		// Connect to out database application. Pass in the user we are talking to.
+		// Also pass in the current user. 
 		var myDataRef = new Firebase('https://crackling-fire-5656.firebaseio.com/<%=[@user.id, current_user.id].sort.join("-")%>');
+
+		// When child is added. run function, with snapshot paramater
 		myDataRef.on('child_added', function(snapshot) {
-  			var obj = snapshot.val();
-  			var text = [obj.name, obj.text].join(": ");
-  			var li = $("<li/>").html(text).appendTo("#messagelist");
-  			$("#message").val("")
+			var obj = snapshot.val();
+			var text = [obj.name, obj.text].join(": ");
+			var li = $("<li/>").html(text).appendTo("#messagelist");
+			$("#message").val("")
 		});
 
+		//
 		$("#submitmessage").on({
 			click:function(e){
 				e.preventDefault()
-				myDataRef.push({name: "<%= @user.name %>", text: $("#message").val()})
+				myDataRef.push({name: "<%= current_user.name %>", text: $("#message").val()})
 			}
 		})
 	</script>

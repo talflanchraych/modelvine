@@ -67,9 +67,6 @@ class User < ActiveRecord::Base
 
   default_scope -> { order('created_at DESC') }
 
-  #Only Show Users on the User Index page, who have updated a name
-  scope :with_name, -> { where("name <> ''") }
-
   #Only Show users that have been approved
   scope :approved,  -> { where(approved: true) }
 

@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def conversation
+    # I'm not sure why arel is being used here
     @user = User.friendly.where("users.id != ?", current_user.id).find(params[:id])
   end
 
@@ -26,7 +27,6 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update_without_password(user_params)
-      # create a new model(talent) instance for current user
       user_type = @user.user_type || params[:user][:user_type_type].constantize.create
       @user.user_type = user_type
       @user.save

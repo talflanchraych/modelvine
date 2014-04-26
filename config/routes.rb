@@ -15,7 +15,7 @@ FiscalFitness::Application.routes.draw do
     collection do
       post :search
       get :invite
-      #post :generate_invites
+      # post :generate_invites
     end
   end
 
