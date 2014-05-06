@@ -14,7 +14,7 @@ gem 'jquery-rails', '2.2.1'
 gem 'jquery-ui-rails'
 gem 'coffee-rails', '~>4.0.0'
 
-# gem 'turbolinks', '1.1.1'
+gem 'mailboxer'
 
 gem 'simple_form'
 gem 'better_errors'
