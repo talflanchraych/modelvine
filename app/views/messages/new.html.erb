@@ -1,0 +1,11 @@
+Send a message to
+
+  <%= form_for(@message) do |f| %>
+    <%= f.label :username %>
+    <%= f.select :id, User.all.map{ |c| [c.name, c.id] } %>
+    <%= f.label :subject %>
+    <%= f.text_field :subject %>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+    <%= f.submit %>
+  <% end %>

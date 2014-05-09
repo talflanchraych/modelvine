@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   after_create :give_user_invites
   after_create :mark_code_as_used_by
 
+  acts_as_messageable
+
   def give_user_invites
     10.times do
       self.access_codes << AccessCode.create(code: self.generate_code, user_id: self.id)
