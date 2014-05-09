@@ -1,6 +1,6 @@
 <p>
 <% @receipts.each do |receipt| %>
-  <%= receipt.message.body %>
+  <%= receipt.message.sender.username %>: <%= receipt.message.body %>
 <% end %>
 </p>
 
