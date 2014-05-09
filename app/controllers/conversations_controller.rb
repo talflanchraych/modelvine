@@ -6,7 +6,8 @@ class ConversationsController < ApplicationController
     @conversations ||= mailbox.conversations
   end
 
-  def show 
+  def show
+    @conversation = conversation
     @receipts = conversation.receipts_for current_user
   end
 

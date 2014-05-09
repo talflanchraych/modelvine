@@ -1,8 +1,9 @@
-<p>
+<h3><%= @conversation.subject %></h3>
+
 <% @receipts.each do |receipt| %>
-  <%= receipt.message.sender.username %>: <%= receipt.message.body %>
+  <div><%= receipt.message.sender.username %>: <%= receipt.message.body %></div>
 <% end %>
-</p>
+
 
 <%#= conversation.subject %>
  
