@@ -1,5 +1,5 @@
 <% @conversations.each do |conversation| %>
  
-  <div><%= conversation.subject %></div>
+  <div><%= link_to conversation.subject, conversation %></div>
 
 <% end %>
