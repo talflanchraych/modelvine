@@ -1,5 +1,3 @@
-# This is the master controller for all different types of users
-
 class BaseUserTypeController < ApplicationController
 
   before_filter :authenticate_user!

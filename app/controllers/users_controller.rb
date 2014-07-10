@@ -15,11 +15,6 @@ class UsersController < ApplicationController
     @model = ModelDecorator.decorate(@user.user_type)
   end
 
-  def conversation
-    # I'm not sure why arel is being used here
-    @user = User.friendly.where("users.id != ?", current_user.id).find(params[:id])
-  end
-
   def edit
     @user = User.friendly.find(params[:id])
   end

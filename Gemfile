@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
 gem 'bootstrap-sass', '2.3.2.0'
@@ -13,15 +12,14 @@ gem 'uglifier', '2.1.1'
 gem 'jquery-rails', '2.2.1'
 gem 'jquery-ui-rails'
 gem 'coffee-rails', '~>4.0.0'
+gem 'haml'
 
-gem 'mailboxer'
+gem 'mailboxer', '0.11.0'
 
 gem 'simple_form'
-gem 'better_errors'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '1.0.2'
 
-# Uncomment this line on OS X.
 gem 'growl', '1.0.3'
 
 gem 'pg'
@@ -30,15 +28,13 @@ gem 'devise'
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
 
-#Attach pictures
 gem 'paperclip', '~> 3.0'
-#Amazon store's all pictures
-gem 'aws-sdk'
-#Decorator
-gem 'draper'
+gem 'aws-sdk' #Amazon store's all pictures
+gem 'draper' #Decorator
 gem 'friendly_id'
 
 group :development do
+  gem 'better_errors'
   gem 'binding_of_caller'
 end
 

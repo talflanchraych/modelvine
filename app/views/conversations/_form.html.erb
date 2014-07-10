@@ -1,4 +1,5 @@
-<%= simple_form_for :message, url: [:reply, conversation] do |f| %>
+<%= simple_form_for :conversation, url: :conversations do |f| %>
+  <%= hidden_field("user_id", @recipient) %>
   <%= f.input :subject %>
   <%= f.input :body %>
   <div class="form-actions">

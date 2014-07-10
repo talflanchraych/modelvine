@@ -1,5 +1,14 @@
-<% @conversations.each do |conversation| %>
- 
-  <div><%= link_to conversation.subject, conversation %></div>
-
-<% end %>
+<h1>Conversations</h1>
+<h2>Inbox</h2>
+<ul>
+  <%= render mailbox.inbox %>
+</ul>
+<h2>Sentbox</h2>
+<ul>
+  <%= render mailbox.sentbox %>
+</ul>
+<h2>Trash</h2>
+<ul>
+  <%= render mailbox.trash %>
+</ul>
+<%= link_to 'Start Conversation', :new_conversation %>

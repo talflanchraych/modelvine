@@ -5,7 +5,7 @@
 	<% end %>
 	<div class="userDetails">
 		<p class="name"><%= @user.name %></p>
-		<%= link_to("send a message", conversation_user_path(@user)) unless current_user.id == @user.id %>
+		<%= link_to("send a message", new_conversation_path(@user.id)) unless current_user.id == @user.id %>
 		<p class="city"><%= @user.zip_code %></p>
 		<p><%= @user.age %> years old</p>
 		<p><%= @user.user_type.website %></p>

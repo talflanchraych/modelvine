@@ -10,7 +10,6 @@ FiscalFitness::Application.routes.draw do
   resources :users do
     member do
       post :set_default_photo
-      get :conversation
     end
     collection do
       post :search
@@ -25,7 +24,8 @@ FiscalFitness::Application.routes.draw do
     end
   end
   
-  resources :conversations do
+  get 'conversations/new/params(:id)', to: 'conversations#new', as: 'new_conversation'
+  resources :conversations, only: [:index, :show, :create] do
     member do
       post :reply
       post :trash
