@@ -7,8 +7,6 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    binding.pry
-
     recipients = User.find(params["user_id"].keys[0])
 
     conversation = current_user.send_message(recipients, *conversation_params(:body, :subject)).conversation
